@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Jul 11 09:34:15 CST 2022","Mon Jul 11 09:34:25 CST 2022","10373","test_case.web_case.xijiao","test_xj_001_login","TestXJ001Login","","","test_xj_login_001_get_verifycode[admin-123456]","
+            用例描述：获取验证码
+        "
+"failed","Mon Jul 11 09:33:54 CST 2022","Mon Jul 11 09:34:15 CST 2022","20862","test_case.web_case.xijiao","test_xj_001_login","TestXJ001Login","","","test_xj_login_001_get_verifycode[admin-123123]","
+            用例描述：获取验证码
+        "
