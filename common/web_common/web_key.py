@@ -1,30 +1,15 @@
 # -- coding:utf-8 --
 from time import sleep
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.relative_locator import locate_with
 from selenium.webdriver.support.wait import WebDriverWait
-from common.web_common.chrome_option import ChromeOptions
 
-
-def open_browser(type_='Chrome'):
-    '''基于type_值决定生成的driver对象是什么类型'''
-    if type_ == 'Chrome':
-        driver = webdriver.Chrome(options=ChromeOptions().options())
-    else:
-        try:
-            driver = getattr(webdriver,type_)()
-        except Exception as e:
-            print("Exception Information:",str(e))
-            driver = webdriver.Chrome()
-    return driver
 
 class WebKey:
 
-
-    def __init__(self):
+    def __init__(self,driver):
         '''初始化driver及配置'''
-        self.driver = open_browser()
+        self.driver = driver
         self.driver.implicitly_wait(10)
 
     def open(self,txt):

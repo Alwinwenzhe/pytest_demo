@@ -13,7 +13,7 @@
 #
 #     exam = Exam_Manage()
 #
-#     # @pytest.mark.xijiao
+#     @pytest.mark.xijiao
 #     def test_xj_002_create_exam(self):
 #         self.exam.create_exam_po()
 #         assert 1==1;

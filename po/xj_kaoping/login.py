@@ -13,19 +13,17 @@ class Login(object):
     remmber_status = (By.XPATH,'//*[@id="app"]/div/form/label/span[2]')
     log_button = (By.XPATH,'//*[@id="app"]/div/form/button')
 
-    def __init__(self):
-        self.web = WebKey()
-        self.dri = self.web.driver
-        self.web.open(self.url)
+    def __init__(self,driver):
+        self.web = WebKey(driver)
 
-    def log_in(self,user_name,password):
+    def log_in(self,user_name,password,dirver):
         '''登录操作'''
-        self.web.refresh()
+        self.web.open(self.url)
         self.web.send(*self.account,user_name)
         self.web.send(*self.pwd,password)
         self.web.click(*self.remmber_status)
         self.web.click(*self.log_button)
-        self.web.wait(10)
+        self.web.wait(6)
 
 if __name__ == '__main__':
     lo = Login()
