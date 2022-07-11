@@ -8,8 +8,6 @@ from selenium.webdriver.common.by import By
 
 class TestXJ001Login:
 
-
-
     @pytest.mark.xijiao
     # @pytest.mark.parametrize()第一个参数为逗号分隔的字符串列表，第二个参数是值列表parametrize()
     @pytest.mark.parametrize('name,pwd', [['admin','123123'],['admin','123456']])

@@ -3,29 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="a6073505-d6c2-417b-a66e-1ee6166b8175" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/web_common/web_key.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/web_common/web_key.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/po/xj_kaoping/exam_manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/po/xj_kaoping/exam_manage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/po/xj_kaoping/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/po/xj_kaoping/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/behaviors.csv" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/behaviors.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/behaviors.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/behaviors.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/data/categories.csv" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/categories.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/categories.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/categories.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/packages.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/packages.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/suites.csv" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/suites.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/suites.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/suites.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/data/test-cases/475f96c46d334cec.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/data/test-cases/57b01eebb0104882.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/report/data/timeline.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/data/timeline.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/export/influxDbData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/report/export/influxDbData.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/export/prometheusData.txt" beforeDir="false" afterPath="$PROJECT_DIR$/report/export/prometheusData.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/history/categories-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/history/categories-trend.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/history/duration-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/history/duration-trend.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/history/history-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/history/history-trend.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/history/history.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/history/history.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/history/retry-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/history/retry-trend.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/widgets/behaviors.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/widgets/behaviors.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/widgets/categories-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/widgets/categories-trend.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/report/widgets/categories.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/widgets/categories.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/widgets/duration-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/widgets/duration-trend.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/widgets/duration.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/widgets/duration.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/report/widgets/history-trend.json" beforeDir="false" afterPath="$PROJECT_DIR$/report/widgets/history-trend.json" afterDir="false" />
@@ -49,7 +41,7 @@
     <SUITE FILE_PATH="coverage/pytest_demo$pytest_for_test_001_parametrize_Test001Parametrize_test_04_yaml_add_step.coverage" NAME="pytest for test_001_parametrize.Test001Parametrize.test_04_yaml_add_step Coverage Results" MODIFIED="1651134404689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case/demo_case" />
     <SUITE FILE_PATH="coverage/pytest_demo$login.coverage" NAME="login Coverage Results" MODIFIED="1657274495021" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/po/xj_kaoping" />
     <SUITE FILE_PATH="coverage/pytest_demo$test_003_qiuyi.coverage" NAME="test_003_qiuyi Coverage Results" MODIFIED="1651735202273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case/web_case" />
-    <SUITE FILE_PATH="coverage/pytest_demo$run_all.coverage" NAME="run_all Coverage Results" MODIFIED="1657523346673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/pytest_demo$run_all.coverage" NAME="run_all Coverage Results" MODIFIED="1657528097702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pytest_demo$pytest_for_test_ysy_002_health_data_TestYsy002HealthData_test_004_yaml_add_step.coverage" NAME="pytest for test_ysy_002_health_data.TestYsy002HealthData.test_004_yaml_add_step Coverage Results" MODIFIED="1653635204012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case/inter_case" />
     <SUITE FILE_PATH="coverage/pytest_demo$yaml_util.coverage" NAME="yaml_util Coverage Results" MODIFIED="1652844179981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/common" />
     <SUITE FILE_PATH="coverage/pytest_demo$pytest_for_demo_001_TestMas1.coverage" NAME="pytest for demo_001.TestMas1 Coverage Results" MODIFIED="1653981288313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test_case/demo_case" />
@@ -83,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_case/web_case/conftest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="494">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -107,7 +99,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/web_common/chrome_option.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
+            <state relative-caret-position="627">
               <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="e#161#191#0" expanded="true" />
@@ -119,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_001_login.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="21" />
+            <state relative-caret-position="323">
+              <caret line="17" column="34" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="34" />
               <folding>
                 <element signature="e#32#50#0" expanded="true" />
               </folding>
@@ -128,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/po/xj_kaoping/login.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+            <state relative-caret-position="285">
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
               <folding>
                 <element signature="e#24#68#0" expanded="true" />
               </folding>
@@ -152,8 +144,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_002_exam_manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+            <state relative-caret-position="133">
+              <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
               <folding>
                 <element signature="e#42#60#0" expanded="true" />
               </folding>
@@ -162,10 +154,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/po/xj_kaoping/exam_manage.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            <state relative-caret-position="513">
+              <caret line="27" column="44" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="44" />
               <folding>
                 <element signature="e#42#86#0" expanded="true" />
               </folding>
@@ -173,11 +170,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/report/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+            <state relative-caret-position="304">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -265,19 +262,19 @@
         <option value="$PROJECT_DIR$/keys_all/web_keys/qiuyi_keys.py" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/run_all.py" />
-        <option value="$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_002_exam_manage.py" />
         <option value="$PROJECT_DIR$/common/web_common/base_driver.py" />
-        <option value="$PROJECT_DIR$/po/xj_kaoping/exam_manage.py" />
-        <option value="$PROJECT_DIR$/test_case/web_case/conftest.py" />
-        <option value="$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_001_login.py" />
         <option value="$PROJECT_DIR$/common/web_common/web_key.py" />
         <option value="$PROJECT_DIR$/po/xj_kaoping/login.py" />
+        <option value="$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_001_login.py" />
+        <option value="$PROJECT_DIR$/po/xj_kaoping/exam_manage.py" />
+        <option value="$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_002_exam_manage.py" />
+        <option value="$PROJECT_DIR$/test_case/web_case/conftest.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="2157" />
-    <option name="y" value="-39" />
+    <option name="y" value="-40" />
     <option name="width" value="2430" />
     <option name="height" value="1122" />
   </component>
@@ -295,22 +292,6 @@
             <path>
               <item name="pytest_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="pytest_demo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pytest_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pytest_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pytest_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pytest_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="web_common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pytest_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pytest_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pytest_demo" type="b2602c69:ProjectViewProjectNode" />
@@ -354,13 +335,6 @@
               <item name="pytest_demo" type="462c0819:PsiDirectoryNode" />
               <item name="test_case" type="462c0819:PsiDirectoryNode" />
               <item name="web_case" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pytest_demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pytest_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="test_case" type="462c0819:PsiDirectoryNode" />
-              <item name="web_case" type="462c0819:PsiDirectoryNode" />
-              <item name="xijiao" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -609,7 +583,8 @@
       <workItem from="1657288914946" duration="590000" />
       <workItem from="1657420740236" duration="2840000" />
       <workItem from="1657424166536" duration="251000" />
-      <workItem from="1657501882028" duration="6791000" />
+      <workItem from="1657501882028" duration="7007000" />
+      <workItem from="1657524342669" duration="2093000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交&#10;test_case中的xijiao用例下的登录用例执行没问题了">
       <created>1657505792474</created>
@@ -618,7 +593,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657505792474</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="第二次提交，解决登录用例执行2个用例打开多个窗口问题">
+      <created>1657523469035</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1657523469035</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -654,18 +636,18 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="220851000" />
+    <option name="totallyTimeSpent" value="223160000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1913" y="-476" width="2148" height="1308" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13923445" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14066985" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.19010417" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49957156" weight="0.41202673" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.19010417" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49957156" visible="true" weight="0.41145834" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.35243055" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -719,7 +701,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="第一次提交&#10;test_case中的xijiao用例下的登录用例执行没问题了" />
-    <option name="LAST_COMMIT_MESSAGE" value="第一次提交&#10;test_case中的xijiao用例下的登录用例执行没问题了" />
+    <MESSAGE value="第二次提交，解决登录用例执行2个用例打开多个窗口问题" />
+    <option name="LAST_COMMIT_MESSAGE" value="第二次提交，解决登录用例执行2个用例打开多个窗口问题" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -792,13 +775,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/common/my_log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://E:/programs/python/Lib/encodings/cp65001.py" />
     <entry file="file://$PROJECT_DIR$/extract.yaml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1070,43 +1046,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_all.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/report/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_002_exam_manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <element signature="e#42#60#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/po/xj_kaoping/exam_manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-          <folding>
-            <element signature="e#42#86#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/common/web_common/base_driver.py" />
     <entry file="file://$PROJECT_DIR$/common/web_common/chrome_option.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
+        <state relative-caret-position="627">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#161#191#0" expanded="true" />
@@ -1114,32 +1057,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/web_common/base_driver.py">
+    <entry file="file://$PROJECT_DIR$/po/xj_kaoping/login.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" selection-start-line="4" selection-end-line="5" selection-end-column="57" />
+        <state relative-caret-position="285">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
           <folding>
-            <element signature="e#42#72#0" expanded="true" />
+            <element signature="e#24#68#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_case/web_case/conftest.py">
+    <entry file="file://$PROJECT_DIR$/po/xj_kaoping/exam_manage.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state relative-caret-position="513">
+          <caret line="27" column="44" selection-start-line="27" selection-start-column="29" selection-end-line="27" selection-end-column="44" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#42#86#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_001_login.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="18" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="323">
+          <caret line="17" column="34" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="34" />
           <folding>
             <element signature="e#32#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_case/web_case/xijiao/test_xj_002_exam_manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
+          <folding>
+            <element signature="e#42#60#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1154,13 +1110,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/po/xj_kaoping/login.py">
+    <entry file="file://$PROJECT_DIR$/test_case/web_case/conftest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state relative-caret-position="494">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
           <folding>
-            <element signature="e#24#68#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_all.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/report/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
