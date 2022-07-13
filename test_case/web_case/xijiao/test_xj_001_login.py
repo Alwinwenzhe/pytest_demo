@@ -10,14 +10,14 @@ class TestXJ001Login:
 
     @pytest.mark.xijiao
     # @pytest.mark.parametrize()第一个参数为逗号分隔的字符串列表，第二个参数是值列表parametrize()
-    @pytest.mark.parametrize('name,pwd', [['admin','123123'],['admin','123456']])
-    def test_xj_login_001_get_verifycode(self, name,pwd,open_browser):
+    @pytest.mark.parametrize('name,pwd,result', [['admin','123123',False],['admin','123456',True]])
+    def test_xj_login_001_get_verifycode(self, name,pwd,result,open_browser):
         """
             用例描述：获取验证码
         """
         login = Login(open_browser)
         login.log_in(name,pwd,open_browser)
-        assert login.web.assert_text(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div/span','系统管理')
+        assert result == login.web.assert_text(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div/span','系统管理')
 
 
 if __name__ == '__main__':

@@ -23,7 +23,7 @@ class Login(object):
         self.web.send(*self.pwd,password)
         self.web.click(*self.remmber_status)
         self.web.click(*self.log_button)
-        self.web.wait(6)
+        self.web.wait(1)
 
 if __name__ == '__main__':
     lo = Login()

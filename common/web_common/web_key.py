@@ -16,18 +16,27 @@ class WebKey:
         '''封装get'''
         self.driver.get(txt)
 
+    def get_cur_url(self):
+        '''获取当前url'''
+        return self.driver.current_url
+
     def refresh(self):
         '''刷新'''
         self.driver.refresh()
 
     def find_ele(self,by,value):
         '''
-        查找元素
+        查找元素,增加了try except
         :param by:    查找方式，比如：id、name等
         :param value: 该方式对应的元素值
         :return:
         '''
-        return self.driver.find_element(by,value)
+        try:
+            self.driver.find_element(by,value)
+        except Exception as e:
+            print(e)
+        finally:
+            return self.driver.find_element(by,value)
 
     def click(self,by,value):
         '''
@@ -163,4 +172,12 @@ class WebKey:
         except Exception as e:
             print("断言信息失败：" + str(e))
             return False
+
+    def assert_url(self, expect_url):
+        '''
+        通过当前url，判断执行是否成功
+        '''
+        cur_url = self.get_cur_url()
+        result = True if cur_url == expect_url else False
+        return result
 
