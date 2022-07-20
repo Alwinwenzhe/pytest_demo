@@ -1,7 +1,7 @@
 # Status：PASS
 # TIME：2022_07_07
-import pytest,time
-from po.xj_kaoping.login import Login
+import pytest
+from po.xj_kaoping.x01_home.login import Login
 from selenium.webdriver.common.by import By
 
 
@@ -11,7 +11,7 @@ class TestXJ001Login:
     @pytest.mark.xijiao
     # @pytest.mark.parametrize()第一个参数为逗号分隔的字符串列表，第二个参数是值列表parametrize()
     @pytest.mark.parametrize('name,pwd,result', [['admin','123123',False],['admin','123456',True]])
-    def test_xj_login_001_get_verifycode(self, name,pwd,result,open_browser):
+    def test_xj_login_001(self, name,pwd,result,open_browser):
         """
             用例描述：获取验证码
         """
@@ -21,4 +21,4 @@ class TestXJ001Login:
 
 
 if __name__ == '__main__':
-    print(TestXJ001Login().test_xj_login_001_get_verifycode)
+    print(TestXJ001Login().test_xj_login_001)

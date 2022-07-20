@@ -19,7 +19,7 @@ class DealTime(object):
         '''获取当前得日期'''
         return time.strftime("%Y-%m-%d")
 
-    def get_cur_time_add(self,num=10, *args,**kwargs):
+    def get_cur_time_add(self,num=16, *args,**kwargs):
         '''
         获取当前时间并延后时间
         :param num:   默认延后10分钟

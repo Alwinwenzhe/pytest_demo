@@ -1,6 +1,4 @@
 import pytest
-from po.xj_kaoping.login import Login
-from selenium.webdriver.common.by import By
 from selenium import webdriver
 from common.web_common.chrome_option import ChromeOptions
 

@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"a8841e4618e0bf57dde90ce5156036c6","name":"test_case.web_case.xijiao","statistic":{"failed":1,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":3}}]}
+{"total":1,"items":[{"uid":"a8841e4618e0bf57dde90ce5156036c6","name":"test_case.web_case.xijiao","statistic":{"failed":0,"broken":2,"skipped":0,"passed":9,"unknown":0,"total":11}}]}

@@ -3,7 +3,7 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.relative_locator import locate_with
 from selenium.webdriver.support.wait import WebDriverWait
-
+import random
 
 class WebKey:
 
@@ -12,9 +12,24 @@ class WebKey:
         self.driver = driver
         self.driver.implicitly_wait(10)
 
+    def random_1(self,num=1):
+        '''随机1秒内休息,或大于2的随机'''
+        if num == 1 :
+            rand_sleep = random.random()
+            sleep(rand_sleep)
+        else:
+            sleep(num)
+
+
+    def exec_js(self,js):
+        '''当定位出问题，可以使用js执行'''
+        self.driver.execute_script(js)
+        self.random_1(5)
+
     def open(self,txt):
         '''封装get'''
         self.driver.get(txt)
+        self.random_1()
 
     def get_cur_url(self):
         '''获取当前url'''
@@ -23,6 +38,7 @@ class WebKey:
     def refresh(self):
         '''刷新'''
         self.driver.refresh()
+        self.random_1()
 
     def find_ele(self,by,value):
         '''
@@ -33,12 +49,28 @@ class WebKey:
         '''
         try:
             self.driver.find_element(by,value)
+            self.random_1()
         except Exception as e:
             print(e)
         finally:
             return self.driver.find_element(by,value)
 
-    def click(self,by,value):
+    def find_eles(self,by,value):
+        '''
+        查找元素,增加了try except
+        :param by:    查找方式，比如：id、name等
+        :param value: 该方式对应的元素值
+        :return:
+        '''
+        try:
+            self.driver.find_elements(by,value)
+            self.random_1()
+        except Exception as e:
+            print(e)
+        finally:
+            return self.driver.find_elements(by,value)
+
+    def click(self,by,value,*args,**kwargs):
         '''
         点击元素
         :param by:    查找方式，比如：id、name等
@@ -46,6 +78,7 @@ class WebKey:
         :return:
         '''
         self.find_ele(by,value).click()
+        self.random_1()
 
     def send(self,by,value,txt):
         '''
@@ -57,6 +90,7 @@ class WebKey:
         '''
         self.find_ele(by,value).clear()
         self.find_ele(by,value).send_keys(txt)
+        self.random_1()
 
     def web_wait(self,by,value):
         '''
@@ -65,6 +99,7 @@ class WebKey:
         :param value: 该方式对应的元素值
         :return:
         '''
+        self.random_1()
         return WebDriverWait(self.driver,10,0.5).until(
             lambda el:self.find_ele(by,value),message='显示查找元素失败'
         )
@@ -91,6 +126,7 @@ class WebKey:
             self.driver.switch_to.frame(by)
         else:
             self.driver.switch_to.frame(self.find_ele(by,value))
+        self.random_1()
 
     def switch_default(self):
         '''切换到默认的frame'''
@@ -106,6 +142,7 @@ class WebKey:
         if close:
             self.driver.close()
         self.driver.switch_to.window(handles[index])
+        self.random_1()
 
     def relative_locator(self,direct,by,value,ele):
         '''
@@ -172,6 +209,7 @@ class WebKey:
         except Exception as e:
             print("断言信息失败：" + str(e))
             return False
+        self.random_1()
 
     def assert_url(self, expect_url):
         '''
@@ -181,3 +219,7 @@ class WebKey:
         result = True if cur_url == expect_url else False
         return result
 
+
+if __name__ == '__main__':
+    wk = WebKey()
+    wk.random_1(6)

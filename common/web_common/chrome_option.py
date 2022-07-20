@@ -31,5 +31,5 @@ class ChromeOptions:
         prefs['credentials_enable_service'] = False
         prefs['profile.password_manager_enabled'] =False
         options.add_experimental_option('prefs',prefs)
-        sleep(4)
+        sleep(1)
         return options

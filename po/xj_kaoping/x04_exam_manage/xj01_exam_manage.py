@@ -6,7 +6,7 @@ from common.web_common.web_key import WebKey
 from selenium.webdriver.common.by import By
 
 
-class XJ04_Exam_Manage(object):
+class XJ01_Exam_Manage(object):
     '''第4个功能模块考试管理'''
 
     url_home = 'http://192.168.6.167:3000/teachEvaluation/#/dashboard'
