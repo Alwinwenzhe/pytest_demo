@@ -2,10 +2,10 @@
 from time import sleep
 
 import pytest
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+d = webdriver.Chrome()
+d.get("http://www.baidu.com")
+d.find_element(By.ID,'su').get_attribute('text')
 
-class Test001:
-
-    def test_01_p(self):
-        sleep(3)
-        print('this is web_case 001 demo')

@@ -1,10 +1,12 @@
-import random
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from time import sleep
+a = 2
+b = 0
 
+def positive_to_negative(num):
+    return '-' + str(num)
 
-dr = webdriver.Chrome()
-dr.get("http://news.baidu.com/")
-eles = dr.find_elements(By.XPATH,'//ul[@class="ulist.focuslistnews"]')
-print(eles)
+c = positive_to_negative(a)
+
+if int(c) > b:
+    print('error')
+else:
+    print('ok')

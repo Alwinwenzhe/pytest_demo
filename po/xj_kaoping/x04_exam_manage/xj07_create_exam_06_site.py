@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 from common.web_common.web_key import WebKey
 from selenium.webdriver.common.action_chains import ActionChains
 
-
 class Xj07CreateExam06Site(object):
 
     url = 'http://192.168.6.167:3000/teachEvaluation/#/plan/planAdd'

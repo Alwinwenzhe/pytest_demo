@@ -60,7 +60,7 @@ class WebKey:
         查找元素,增加了try except
         :param by:    查找方式，比如：id、name等
         :param value: 该方式对应的元素值
-        :return:
+        :return:  返回的list从0开始
         '''
         try:
             self.driver.find_elements(by,value)

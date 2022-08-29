@@ -17,9 +17,9 @@ class YamlUtil:
     #         value = yaml.load(f.read(),Loader=yaml.FullLoader)
     #         return value
 
-    def read_extract_yaml(self,key):
+    def read_extract_yaml(self,key,file_name = '/extract.yaml'):
         '''读取临时存放数据得yaml文件'''
-        with open(self.root_path + '/extract.yaml',encoding='utf-8') as  f:
+        with open(self.root_path + file_name,encoding='utf-8') as  f:
             value = yaml.load(f.read(),Loader=yaml.FullLoader)
             return value[key]
 
@@ -39,10 +39,18 @@ class YamlUtil:
         self.env_raplace_yaml(cases,file_name)
         return self.read_inter_yaml(r'/test_case/inter_case/cases.yaml')
 
-    def write_inter_yaml(self,write_dict_data,file_name):
-        '''写入yaml'''
-        with open(self.root_path + file_name,mode='a', encoding='utf-8') as f:
-            yaml.dump(write_dict_data,f)
+    def write_inter_yaml(self,key,value,file_name='/extract.yaml'):
+        '''
+        写入yaml
+        :param key:
+        :param value:
+        :param file_name: extract.yaml是默认的根目录下文件配置
+        :return:
+        '''
+        yaml_file = self.read_inter_yaml(file_name)
+        yaml_file[key] = value
+        with open(self.root_path + file_name,mode='w', encoding='utf-8') as f:
+            yaml.dump(yaml_file,f)
 
     def clear_yaml(self,file_name):
         '''清空yaml'''
@@ -51,6 +59,7 @@ class YamlUtil:
 
     def read_config_file(self,node):
         '''读取根目录config中得值'''
+
         with open(self.root_path + r'\\config.yaml', mode='r', encoding='utf-8') as f:
             value = yaml.load(f.read(),Loader=yaml.FullLoader)
             return value[node]
@@ -100,6 +109,11 @@ class YamlUtil:
 
 if __name__ == '__main__':
     yal = YamlUtil()
-    old_file = yal.root_path + r'/test_case/inter_case/test_ysy_002_add_step.yaml'
-    add_step_cases = deal_csv.FromCsvToJson(yal.root_path + '/test_case/inter_case/add_step.csv')
-    yal.env_raplace_yaml(add_step_cases,old_file)
+    # old_file = yal.root_path + r'/test_case/inter_case/test_ysy_002_add_step.yaml'
+    # add_step_cases = deal_csv.FromCsvToJson(yal.root_path + '/test_case/inter_case/add_step.csv')
+    # yal.env_raplace_yaml(add_step_cases,old_file)
+    # print(yal.root_path)
+    # yal.write_inter_yaml({'ex_name': 123},r'/data/temp_data.yaml')
+    print(yal.read_extract_yaml('marking_num'))
+    yal.write_inter_yaml('marking_num',2)
+    print(yal.read_extract_yaml('marking_num'))

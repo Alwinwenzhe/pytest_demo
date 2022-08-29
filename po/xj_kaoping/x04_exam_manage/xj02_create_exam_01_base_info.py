@@ -5,6 +5,7 @@
 from common.web_common.web_key import WebKey
 from selenium.webdriver.common.by import By
 from common.deal_time import DealTime
+from common.yaml_util import YamlUtil
 
 
 class XJ02_Create_Exam_01_Base_Info(object):
@@ -28,6 +29,10 @@ class XJ02_Create_Exam_01_Base_Info(object):
 
     # 监考设置
     proctor_set = (By.ID,'tab-moniterSetting')
+    # 监考老师人数
+    invigilation_text = (By.XPATH,'//*[@id="pane-moniterSetting"]/div/form/div[3]/div/div/div/input')
+    # 阅卷次数
+    marking_text = (By.XPATH,'//*[@id="pane-moniterSetting"]/div/form/div[5]/div/div/div/input')
 
     # 考题分布设置
     distribution_of_exam = (By.ID,'tab-spreadSetting')
@@ -42,6 +47,9 @@ class XJ02_Create_Exam_01_Base_Info(object):
     def __init__(self,driver):
         self.web = WebKey(driver)
         self.tim = DealTime()
+        self.ya = YamlUtil()
+        self.ex_name = 'AT' + "_" + self.tim.get_cur_date() + "_" + str(self.tim.get_current_timestamp()) + "_cwz"
+        self.ya.write_inter_yaml('ex_name',self.ex_name)
 
     def create_exam(self):
         '''创建考试流程'''
@@ -52,7 +60,11 @@ class XJ02_Create_Exam_01_Base_Info(object):
 
     def base_info(self):
         '创建基本信息--仅有算法考后评分'
-        self.web.send(*self.exam_name,'AT'+ "_" + self.tim.get_cur_date()+ "_" + str(self.tim.get_current_timestamp()) + "_cwz")
+
+        self.web.send(*self.exam_name,self.ex_name)
+
+        # 移除只读属性
+        self.web.exec_js("document.getElementsByClassName('el-input__inner')[3].removeAttribute('readonly')")
         self.web.send(*self.exam_date,self.tim.get_cur_date())
         self.web.click(*self.base_inf)
         for i in range(3):
@@ -66,6 +78,11 @@ class XJ02_Create_Exam_01_Base_Info(object):
 
     def base_info_choose_time(self):
         '''选择考试时间，如果是下午，那么上午随意选；反之一样'''
+        # 先去除只读
+        self.web.exec_js("document.getElementsByClassName('el-input__inner')[6].removeAttribute('readonly')")
+        self.web.exec_js("document.getElementsByClassName('el-input__inner')[7].removeAttribute('readonly')")
+        self.web.exec_js("document.getElementsByClassName('el-input__inner')[8].removeAttribute('readonly')")
+        self.web.exec_js("document.getElementsByClassName('el-input__inner')[9].removeAttribute('readonly')")
         if self.tim.morning_or_afternoon() == 'afternoon':
             self.web.send(*self.morning_start,'00:00')
             self.web.click(*self.base_inf)
@@ -88,7 +105,9 @@ class XJ02_Create_Exam_01_Base_Info(object):
     def proctor_setting(self):
         '''基本信息—监考设置'''
         self.web.click(*self.proctor_set)
-        # 暂未修改任何内容
+        # 将监考老师和阅卷次数设置为1
+        self.web.send(*self.invigilation_text,self.ya.read_extract_yaml('invigilation_num'))
+        self.web.send(*self.marking_text,self.ya.read_extract_yaml('marking_num'))
 
     def dis_of_exam(self):
         '''考题分布，'''
@@ -103,4 +122,5 @@ class XJ02_Create_Exam_01_Base_Info(object):
         self.web.send(*self.notice,'AT_这是自动化生成得公告内容，用以区分普通计划')
         self.web.switch_default()
         self.web.click(*self.save_buttion)
+
 

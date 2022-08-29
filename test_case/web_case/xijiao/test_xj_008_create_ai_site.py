@@ -13,6 +13,6 @@ class TestXj008CreateAiSite(object):
     def test_cho_site(self,open_browser):
         exam = Xj07CreateExam06Site(open_browser)
         exam.choose_site()
-        exam.web.find_ele(By.XPATH,'//span[contains(text(),"保存并下一步查看考生")]')
+        exam.web.find_ele(By.XPATH,'//span[contains(text(),"保存并下一步安排")]')
 
 

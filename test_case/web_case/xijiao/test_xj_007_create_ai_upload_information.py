@@ -3,7 +3,7 @@
 # Time:
 
 import pytest
-from po.xj_kaoping.x04_exam_manage.xj06_create_exam_05_nformation_upload import Xj06CreateExam05InformationUpload
+from po.xj_kaoping.x04_exam_manage.xj06_create_exam_05_information_upload import Xj06CreateExam05InformationUpload
 from selenium.webdriver.common.by import By
 
 class TestXj007CreateAiUploadInformation(object):
