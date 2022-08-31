@@ -6,7 +6,7 @@ import os, re
 # 工程中配置中有相对路径即可替代
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 脚本路径
-API_CASE_PATH = BASE_PATH + r'\data\接口用例.xlsx'
+API_CASE_PATH = BASE_PATH + r'\data\base_student.xlsx'
 QIUYI_CASE_PATH = BASE_PATH + r'\data\web_test_qiuyi.xlsx'
 
 class Config:

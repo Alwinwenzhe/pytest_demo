@@ -1,12 +1,5 @@
-a = 2
-b = 0
+import xlutils
 
-def positive_to_negative(num):
-    return '-' + str(num)
-
-c = positive_to_negative(a)
-
-if int(c) > b:
-    print('error')
-else:
-    print('ok')
+str_a = '1234'
+str_b = str_a.replace('3','6')
+print(str_b)

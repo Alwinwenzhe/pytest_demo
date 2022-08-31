@@ -1,4 +1,5 @@
 import ast, xlrd
+from xlutils.copy import copy
 from openpyxl.styles import PatternFill, Font
 from data import Config
 from common import operate_json
@@ -10,7 +11,16 @@ class ExcelHandler(object):
     oper_j = operate_json.OperateJson()
     con = Config.Config()
 
-    def get_excel_data(self,case_desc,sheet_index=0):
+    def read_excel(self, sheet_index=0):
+        '''
+        读取固定excel,返回指定sheet内容
+        :return:
+        '''
+        book = xlrd.open_workbook(Config.API_CASE_PATH)  # 注意：这里已经写死了是接口测试对应的文件路径，并没有参数化
+        table = book.sheet_by_index(sheet_index)        # 通过索引顺序获取sheet
+        return table
+
+    def get_excel_data(self,sheet_index=0):
         '''
         可以通过参数：file_name文件名来区分不同数据，对应不同的函数入口
          数据文件过滤excel中不必要的数据
@@ -18,19 +28,31 @@ class ExcelHandler(object):
         :param case_desc: 通过excel中的case_description来过滤用例
         :return:
         '''
-        # 获取到book对象
-        book = xlrd.open_workbook(Config.API_CASE_PATH)       # 注意：这里已经写死了是接口测试对应的文件路径，并没有参数化
-        sheet = book.sheet_by_index(sheet_index)              # 这里就默认运行的第一个，也就是debug
-
+        sheet = self.read_excel()
         rows, cols = sheet.nrows, sheet.ncols
         l = []
         title = sheet.row_values(0)
         # 获取其他行
         for i in range(1, rows):
             #print(sheet.row_values(i))
-            if case_desc in sheet.row_values(i):
-                l.append(dict(zip(title, sheet.row_values(i))))  # 先返回一个zip对象，按最短得title或row_values拼接；然后通过dict格式化为dict，最后增加到list中
+            # if case_desc in sheet.row_values(i):
+            l.append(dict(zip(title, sheet.row_values(i))))  # 先返回一个zip对象，按最短得title或row_values拼接；然后通过dict格式化为dict，最后增加到list中
         return l
+
+    def write_excel_by_xlutils(self,row,value):
+        '''
+        对第4列的值进行修改
+        :param row: 从1开始
+        :param value:
+        :return:
+        '''
+        workbook = xlrd.open_workbook(Config.API_CASE_PATH)
+        workbook_new= copy(workbook)
+        sheet = workbook_new.get_sheet(0)
+
+        print(sheet)
+        # sheet.write(row,3,value)
+        # workbook_new.save(Config.API_CASE_PATH)
 
     def write_excel(self,keys,sheet,values,name):
         '''
@@ -73,7 +95,52 @@ class ExcelHandler(object):
         cell(row, column).fill = PatternFill('solid', color)  # 设置颜色
         cell(row, column).font = Font(bold=True)  # 加粗
 
+    def update_column_excel(self,key,add_cont=None,sheet_index=0,file_path=Config.API_CASE_PATH):
+        '''
+        按行批量修改特定某列数据,数据写入excel未完成
+        PASS
+        :param key:
+        :param add_cont:     添加部分
+        :param sheet_index:
+        :return:
+        '''
+        row = 1
+        workbook = xlrd.open_workbook(file_path)
+        workbook_new = copy(workbook)
+        sheet = workbook_new.get_sheet(sheet_index)
+        excel_list = self.get_excel_data()
+        for i in excel_list:
+            if add_cont != None:
+                i[key] = add_cont + i[key]
+            sheet.write(row, 3, i[key])
+            row += 1
+        workbook_new.save(file_path)
+
+    def replace_column_excel(self,key,replace_old=None,replace_new=None,replace_all=None,sheet_index=0,file_path=Config.API_CASE_PATH):
+        '''
+        按行批量修改特定某列数据,数据写入excel未完成
+        PASS
+        :param key:
+        :param replace_old:    替换部分目标内容
+        :param replace_new:    替换源
+        :param replace_all:     替换所有
+        :param sheet_index:
+        :return:
+        '''
+        row = 1
+        workbook = xlrd.open_workbook(file_path)
+        workbook_new = copy(workbook)
+        sheet = workbook_new.get_sheet(sheet_index)
+        excel_list = self.get_excel_data()
+        for i in excel_list:
+            if replace_all !=None:
+                i[key] = replace_all
+            if replace_old != None:
+                i[key] = i[key].replace(replace_old,replace_new)
+            sheet.write(row, 3, i[key])
+            row += 1
+        workbook_new.save(file_path)
+
 if __name__ == '__main__':
     eh = ExcelHandler()
-    print(eh.get_excel_data(r'../../data/接口测试用例.xlsx'))
-
+    eh.update_column_excel("name",add_cont="双语国际_",file_path=r'J:\now_job\西交智汇\data\学校\AT_高新-3\成华_双语国际-非\学生_500.xlsx')
