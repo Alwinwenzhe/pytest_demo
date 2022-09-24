@@ -1,40 +1,21 @@
+# content of test_server.py
+
 import pytest
 
+@pytest.mark.webtest
+def test_send_http():
+    pass # perform some webtest test for your app
 
-# test_fixture1.py
+@pytest.mark.apptest
+def test_something_quick():
+    pass
 
+def test_another():
+    pass
 
-@pytest.fixture(scope='module', autouse=True)
-def test1():
-    print('\n开始执行module')
+class TestClass:
+    def test_method(self):
+        pass
 
-
-@pytest.fixture(scope='class', autouse=True)
-def test2():
-    print('\n开始执行class')
-
-
-@pytest.fixture(scope='function', autouse=True)
-def test3():
-    print('\n开始执行function')
-
-
-def test_a():
-    print('---用例a执行---')
-
-
-def test_d():
-    print('---用例d执行---')
-
-
-class TestCase:
-
-    def test_b(self):
-        print('---用例b执行---')
-
-    def test_c(self):
-        print('---用例c执行---')
-
-
-if __name__ == '__main__':
-    pytest.main(['-s', 'demo_005.py'])
+if __name__ == "__main__":
+    pytest.main(["-s", "test_server.py", "-m= not webtest"])

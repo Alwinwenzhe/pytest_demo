@@ -32,7 +32,7 @@ class XJ02_Create_Exam_01_Base_Info(object):
     # 监考老师人数
     invigilation_text = (By.XPATH,'//*[@id="pane-moniterSetting"]/div/form/div[3]/div/div/div/input')
     # 阅卷次数
-    marking_text = (By.XPATH,'//*[@id="pane-moniterSetting"]/div/form/div[5]/div/div/div/input')
+    marking_text = (By.XPATH,'//input[@placeholder="请填写阅卷次数"]')
 
     # 考题分布设置
     distribution_of_exam = (By.ID,'tab-spreadSetting')

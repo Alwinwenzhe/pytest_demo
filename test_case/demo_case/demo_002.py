@@ -1,5 +1,7 @@
-import xlutils
 
-str_a = '1234'
-str_b = str_a.replace('3','6')
-print(str_b)
+
+
+import random
+
+second = [3, 4, 5, 7, 8][random.randint(0, 2)]
+print(second)

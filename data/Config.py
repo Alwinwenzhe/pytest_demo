@@ -183,5 +183,4 @@ class Config:
 
 if __name__ == "__main__":
     con = Config()
-    print(TEST_CASE_PATH)
     print(con.yhz_test)

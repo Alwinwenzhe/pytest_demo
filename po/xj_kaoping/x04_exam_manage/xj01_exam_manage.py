@@ -17,7 +17,7 @@ class XJ01_Exam_Manage(object):
     # 考试管理--考试列表
     exam_list = (By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[3]/li/ul/div[1]/a/li')
     # 考试管理--考试列表--创建考试
-    create_exam = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[2]/button')
+    create_exam = (By.XPATH,'//button[@class="el-button addSite el-button--primary el-button--medium"]/span/i')
 
     def __init__(self,driver):
         self.web = WebKey(driver)
