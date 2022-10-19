@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXj011ExamRelease(object):
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_audit_exam(self,open_browser):
         '''发布考试'''
         exam_list = Xj10ExamListCreateSession(open_browser)

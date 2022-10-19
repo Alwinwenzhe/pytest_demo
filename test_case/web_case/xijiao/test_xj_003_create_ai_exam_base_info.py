@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXJ003CreateAiExamBaseInfo:
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_01_create_exam_base(self,open_browser):
         exam = XJ02_Create_Exam_01_Base_Info(open_browser)
         exam.create_exam()

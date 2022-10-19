@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXj007CreateAiUploadInformation(object):
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_001_upload_inform(self,open_browser):
         exam = Xj06CreateExam05InformationUpload(open_browser)
         exam.upload()

@@ -21,7 +21,7 @@ stu_info = [
             'pwd': 'lp@_ZH_123'
         }]
 
-class BaoMing(object):
+class LPBaoMing(object):
 
     old_list = ['==请选择==', '木里县', '德昌县', '会东县', '普格县', '布拖县', '金阳县', '昭觉县', '喜德县', '越西县', '甘洛县', '美姑县']
 

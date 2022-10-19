@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXj006CreateAiChooseSchool(object):
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_01_choose_school(self,open_browser):
         choose_sch = Xj05CreateExam04ChooseSchool(open_browser)
         choose_sch.choose_school()

@@ -20,7 +20,7 @@ class TestXJ001Login:
         login.log_in(name,pwd,open_browser)
         assert result == login.web.assert_text(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div/span','系统管理')
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_xj_login_002(self,open_browser, name='admin',pwd='123456',result=True):
         """
             用例描述：获取验证码

@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 class TestXj008CreateAiSite(object):
     '''创建AI考试选择考点'''
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_cho_site(self,open_browser):
         exam = Xj07CreateExam06Site(open_browser)
         exam.choose_site()

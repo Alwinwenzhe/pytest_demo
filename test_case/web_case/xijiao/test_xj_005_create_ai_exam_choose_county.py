@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXj005CreateAiExamChooseCouty(object):
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_01_choose_couty(self,open_browser):
         '''选择区县'''
         exam = Xj04CreateExam03County(open_browser)

@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXj010CreateAiArrangeTeacher(object):
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_arrange_teacher(self,open_browser):
         '''查看学生'''
         exam = Xj09CreateExam08ArrangeTeacher(open_browser)

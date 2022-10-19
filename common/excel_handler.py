@@ -116,6 +116,28 @@ class ExcelHandler(object):
             row += 1
         workbook_new.save(file_path)
 
+    def update_id_card(self,key,sheet_index=0,file_path=Config.API_CASE_PATH):
+        '''
+        按行批量写入身份证号码
+        :param key:
+        :param add_cont:     添加部分
+        :param sheet_index:
+        :return:
+        '''
+        id_card = 513902198604102110
+        row = 1
+        workbook = xlrd.open_workbook(file_path)
+        workbook_new = copy(workbook)
+        sheet = workbook_new.get_sheet(sheet_index)
+        excel_list = self.get_excel_data()
+        for i in excel_list:
+
+            i[key] = str(id_card + 1)
+            sheet.write(row, 3, i[key])
+            id_card +=1
+            row += 1
+        workbook_new.save(file_path)
+
     def replace_column_excel(self,key,replace_old=None,replace_new=None,replace_all=None,sheet_index=0,file_path=Config.API_CASE_PATH):
         '''
         按行批量修改特定某列数据,数据写入excel未完成
@@ -143,4 +165,5 @@ class ExcelHandler(object):
 
 if __name__ == '__main__':
     eh = ExcelHandler()
-    eh.update_column_excel("name",add_cont="双语国际_",file_path=r'J:\now_job\西交智汇\data\学校\AT_高新-3\成华_双语国际-非\学生_500.xlsx')
+    # eh.update_column_excel("name",add_cont="双语国际_",file_path=r'J:\now_job\西交智汇\data\学校\AT_高新-3\成华_双语国际-非\学生_500.xlsx')
+    eh.update_id_card('id',file_path=r'J:\now_job\西交智汇\data\学校\AT_高新-3\成华_双语国际-非\学生_500.xlsx')

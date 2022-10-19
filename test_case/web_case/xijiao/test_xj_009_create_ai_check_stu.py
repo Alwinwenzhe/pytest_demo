@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 class TestXj009CreateAiCheckStu(object):
 
-    @pytest.mark.xijiao
+    @pytest.mark.xj_smoke
     def test_check_stud(self,open_browser):
         '''查看学生'''
         exam = Xj08CreateExam07CheckStudent(open_browser)
