@@ -1,29 +1,49 @@
 # -*- coding: utf-8 -*-
 from common.web_common.web_key import WebKey
 from selenium.webdriver.common.by import By
+from common.yaml_util import YamlUtil
 
 
 class Login(object):
     '''登录页面'''
 
-    url = 'http://192.168.6.167:3000/teachEvaluation/#/login?redirect=%2Fteacher%2Finvigilator'
+    url = '/teachEvaluation/#/login?redirect=%2Fteacher%2Finvigilator'
 
     account = (By.NAME,"userName")
     pwd = (By.NAME,"password")
     remmber_status = (By.XPATH,'//*[@id="app"]/div/form/label/span[2]')
     log_button = (By.XPATH,'//*[@id="app"]/div/form/button')
 
+    # 选择组织机构弹窗
+    organize = (By.CLASS_NAME,'el-dialog.el-dialog--center')
+    choose_orga = (By.CLASS_NAME,'el-input el-input--medium.el-input--suffix')
+    organize_list = (By.XPATH,'//ul/li/span')
+    enter = (By.CLASS_NAME,'el-button el-button--primary.el-button--medium')
+
     def __init__(self,driver):
         self.web = WebKey(driver)
+        self.ya = YamlUtil()
 
-    def log_in(self,user_name,password,dirver):
+    def log_in(self,user_name,password):
         '''登录操作'''
-        self.web.open(self.url)
-        self.web.send(*self.account,user_name)
-        self.web.send(*self.pwd,password)
+        self.web.open(self.ya.read_extract_yaml('ip') + self.url)
+        self.web.send(*self.account, user_name)
+        self.web.send(*self.pwd, password)
         self.web.click(*self.remmber_status)
         self.web.click(*self.log_button)
-        self.web.wait(1)
+        if len(user_name) > 13:
+            self.choose_org()
+
+    def choose_org(self):
+        '''选择组织机构'''
+        self.web.click(*self.choose_orga)
+        sch_name = self.ya.read_extract_yaml('school_name')
+        eles = self.web.find_eles(*self.organize_list)
+        for i in eles:
+            if i.text == sch_name:
+                i.click()
+        self.web.click(*self.enter)
+
 
 if __name__ == '__main__':
     lo = Login()

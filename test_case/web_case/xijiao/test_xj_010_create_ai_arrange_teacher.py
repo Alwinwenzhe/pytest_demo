@@ -10,7 +10,7 @@ class TestXj010CreateAiArrangeTeacher(object):
 
     @pytest.mark.xj_smoke
     def test_arrange_teacher(self,open_browser):
-        '''查看学生'''
+        '''安排考务老师'''
         exam = Xj09CreateExam08ArrangeTeacher(open_browser)
         exam.arrange_teacher()
         exam.web.wait(20)

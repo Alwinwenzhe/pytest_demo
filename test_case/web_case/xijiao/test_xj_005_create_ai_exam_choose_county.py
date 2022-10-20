@@ -12,6 +12,7 @@ class TestXj005CreateAiExamChooseCouty(object):
     def test_01_choose_couty(self,open_browser):
         '''选择区县'''
         exam = Xj04CreateExam03County(open_browser)
+
         exam.choose_county()
         assert exam.web.find_ele(By.XPATH,"//span[contains(text(),'下一步信息上传')]")
         exam.web.wait(20)

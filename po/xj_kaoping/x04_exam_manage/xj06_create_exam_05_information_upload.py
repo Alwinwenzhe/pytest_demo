@@ -87,6 +87,7 @@ class Xj06CreateExam05InformationUpload(object):
         #   上传监考教师
         self.web.click(*self.invigilation_area)
         self.web.click(*self.invigilation_file_upload)
+        self.web.wait(2)
         win_upload(r'J:\now_job\西交智汇\data\学校\AT_高新-3\成都七中\监考老师.xlsx')
         self.web.wait(3)
         self.web.exec_js(self.enter_js)
@@ -99,6 +100,7 @@ class Xj06CreateExam05InformationUpload(object):
         self.web.click(*self.marking_teacher)
         self.web.click(*self.marking_area)
         self.web.click(*self.invigilation_file_upload)
+        self.web.wait(2)
         win_upload(r'J:\now_job\西交智汇\data\学校\AT_高新-3\成都七中\阅卷老师.xlsx')
         self.web.wait(3)
         self.web.exec_js(self.enter_js)
@@ -110,6 +112,7 @@ class Xj06CreateExam05InformationUpload(object):
         self.web.click(*self.inspector_teacher)
         self.web.click(*self.inspector_area)
         self.web.click(*self.invigilation_file_upload)
+        self.web.wait(2)
         win_upload(r'J:\now_job\西交智汇\data\学校\AT_高新-3\成都七中\巡考老师.xlsx')
         self.web.wait(3)
         self.web.exec_js(self.enter_js)

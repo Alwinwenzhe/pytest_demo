@@ -67,7 +67,7 @@ class XJ02_Create_Exam_01_Base_Info(object):
         self.web.exec_js("document.getElementsByClassName('el-input__inner')[3].removeAttribute('readonly')")
         self.web.send(*self.exam_date,self.tim.get_cur_date())
         self.web.click(*self.base_inf)
-        for i in range(3):
+        for i in range(2):
             self.web.click(*self.answer_time,wait=False)
         for i in range(9):
             self.web.click(*self.exam_interval,wait=False)

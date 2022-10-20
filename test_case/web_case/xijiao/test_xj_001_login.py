@@ -17,7 +17,7 @@ class TestXJ001Login:
             用例描述：获取验证码
         """
         login = Login(open_browser)
-        login.log_in(name,pwd,open_browser)
+        login.log_in(name,pwd)
         assert result == login.web.assert_text(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div/span','系统管理')
 
     @pytest.mark.xj_smoke
@@ -26,7 +26,8 @@ class TestXJ001Login:
             用例描述：获取验证码
         """
         login = Login(open_browser)
-        login.log_in(name,pwd,open_browser)
+        login.log_in(name,pwd)
+
         assert result == login.web.assert_text(By.XPATH,'//*[@id="app"]/div/div[1]/div[2]/div[1]/div/ul/div[2]/li/div/span','系统管理')
 
 if __name__ == '__main__':

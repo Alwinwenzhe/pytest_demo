@@ -15,11 +15,10 @@ class WebKey:
     def random_1(self,num=1):
         '''随机1秒内休息,或大于2的随机'''
         if num == 1 :
-            rand_sleep = random.random()
+            rand_sleep = random.randrange(1,3)
             sleep(rand_sleep)
         else:
             sleep(num)
-
 
     def exec_js(self,js):
         '''当定位出问题，可以使用js执行'''
@@ -40,22 +39,22 @@ class WebKey:
         self.driver.refresh()
         self.random_1()
 
-    def find_ele(self,by,value):
-        '''
-        查找元素,增加了try except
-        :param by:    查找方式，比如：id、name等
-        :param value: 该方式对应的元素值
-        :return:
-        '''
+    def find_ele(self,by,value,timeout=10, poll=0.5):
+        """
+        自定义一个元素查找方法
+        依据用户传入的元素信息特征，然后返回当前用户想要查找元素
+        :param feature: 元组类型，包含用户希望的查找方式，及该方式对应的值
+        :return: 返回当前用户查找的元素
+        """
         try:
-            self.driver.find_element(by,value)
-            self.random_1()
+            ele = WebDriverWait(self.driver, timeout, poll).until(lambda x: x.find_element(by,value))
+            return ele
         except Exception as e:
             print(e)
-        finally:
-            return self.driver.find_element(by,value)
+        # finally:
+        #     return ele
 
-    def find_eles(self,by,value):
+    def find_eles(self,by,value,timeout=10, poll=0.5):
         '''
         查找元素,增加了try except
         :param by:    查找方式，比如：id、name等
@@ -63,12 +62,11 @@ class WebKey:
         :return:  返回的list从0开始
         '''
         try:
-            self.driver.find_elements(by,value)
-            self.random_1()
+            eles = WebDriverWait(self.driver, timeout, poll).until(lambda x: x.find_elements(by,value))
+            return eles
         except Exception as e:
             print(e)
-        finally:
-            return self.driver.find_elements(by,value)
+
 
     def click(self,by,value,*args,**kwargs):
         '''
@@ -78,7 +76,6 @@ class WebKey:
         :return:
         '''
         self.find_ele(by,value).click()
-        self.random_1()
 
     def send(self,by,value,txt):
         '''
@@ -90,7 +87,6 @@ class WebKey:
         '''
         self.find_ele(by,value).clear()
         self.find_ele(by,value).send_keys(txt)
-        self.random_1()
 
     def web_wait(self,by,value):
         '''

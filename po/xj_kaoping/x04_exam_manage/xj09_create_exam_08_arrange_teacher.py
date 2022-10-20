@@ -46,6 +46,7 @@ class Xj09CreateExam08ArrangeTeacher(object):
         self.arrange_invigilation()
         self.arrrange_marking()
         self.arrange_inspector()
+        self.web.wait(2)
         self.web.click(*self.save)
 
     def arrange_invigilation(self):
@@ -85,14 +86,11 @@ class Xj09CreateExam08ArrangeTeacher(object):
         :return:
         '''
         num = int('-' + str(num))
+        self.web.wait(2)
         eles = self.web.find_eles(*self.invit_teachers)
+        self.web.wait(2)
         for i in eles[num::]:
             i.click()
 
-    def choose_last_id(self):
-        '''
-        获取最后一个身份证信息
-        :return:
-        '''
 
 

@@ -32,7 +32,7 @@ class Xj05CreateExam04ChooseSchool(object):
         '''进行学校选择'''
         choose_sch_ele = self.web.find_ele(*self.choose_sch)
         ActionChains(self.web.driver).move_to_element(choose_sch_ele).perform()
-        self.web.wait(1)
+        self.web.wait(3)
         self.web.click(*self.screen_school)
         self.web.click(*self.AT_7)
         self.web.exec_js(self.enter_js)

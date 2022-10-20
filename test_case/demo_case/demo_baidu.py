@@ -13,5 +13,6 @@ sel.deselect_by_value()     # 通过下拉选项的value值选择
 sel.deselect_by_index()     # 通过下拉选项的index进行选择
 sel.deselect_by_visible_text()      # 通过下拉选项的可见文本进行选择
 
+
 driver.switch_to.default_content()
 

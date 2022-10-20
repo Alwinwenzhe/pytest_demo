@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 # Status:  选择高新东区还有问题
 # Time:
-
 from common.web_common.web_key import WebKey
 from common.deal_time import DealTime
 from selenium.webdriver.common.by import By
@@ -12,7 +11,7 @@ class Xj04CreateExam03County(object):
     url = 'http://192.168.6.167:3000/teachEvaluation/#/plan/planAdd'
 
     # 区县框
-    county_area = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[1]/div[2]/div[1]')
+    county_area = (By.XPATH,'//div[@class="siteChoose"]/div[2]/div')
     # 筛选区县
     screening_county = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[1]/div[2]/div[2]/div[2]/div[2]/i')
     # screening_county_js_click = "document.elementFromPoint(1100,660).click()"
@@ -31,9 +30,10 @@ class Xj04CreateExam03County(object):
     def choose_county(self):
         '''选择区县'''
         # 移动鼠标 显示区县选择区域
-        find_county_ele = self.web.find_ele(*self.county_area)
+        self.web.wait(10)
+        find_county_ele = self.web.find_ele(*self.county_area,timeout=30)
         ActionChains(self.web.driver).move_to_element(find_county_ele).perform()
-        self.web.wait(1)
+
         # self.web.exec_js(self.screening_county_js_click)
         self.web.click(*self.screening_county)
         self.web.click(*self.east_area)
