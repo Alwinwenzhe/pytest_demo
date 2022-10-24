@@ -33,6 +33,7 @@ class Xj10ExamListCreateSession(object):
     def check_exam(self):
         '''搜索并点击查看'''
         self.search_exam()
+        self.web.wait(1)
         self.web.click(*self.check)
 
     def audit_exam(self):
@@ -41,5 +42,6 @@ class Xj10ExamListCreateSession(object):
         self.web.click(*self.start_audit)
         self.web.click(*self.audit)
         self.web.click(*self.publish)
+        self.web.refresh()
 
 

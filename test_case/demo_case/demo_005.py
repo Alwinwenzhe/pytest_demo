@@ -1,21 +1,33 @@
-# content of test_server.py
+import time, datetime
 
-import pytest
+def draw_start_enter(start_time,wait_time=9):
+    '''判定开始后才进入抽签环节'''
+    # 仅显示当前时分
+    wait_s = wait_time*60
+    while True:
+        cur_time = int(time.time())
+        else_time = start_time - cur_time
+        if else_time < wait_s:
+            print('距离抽签时间小于{0}分钟，可开始抽签'.format(wait_time))
+            break
+        else:
+            print("抽签时间未到，请等待30s")
+            time.sleep(30)
 
-@pytest.mark.webtest
-def test_send_http():
-    pass # perform some webtest test for your app
-
-@pytest.mark.apptest
-def test_something_quick():
+def join_time(self,hm):
+    '''
+    将传入小时分钟，转化为时间戳
+    :param hm:
+    :return:
+    '''
     pass
 
-def test_another():
-    pass
+if __name__ == '__main__':
+    start_time = time.time()
+    # print(start_time)
+    # draw_start_enter(1666336815)
 
-class TestClass:
-    def test_method(self):
-        pass
-
-if __name__ == "__main__":
-    pytest.main(["-s", "test_server.py", "-m= not webtest"])
+    hole_time = "2022-10-21 18:18:18"
+    tt = datetime.datetime.strptime(hole_time, "%Y-%m-%d %H:%M:%S")
+    un_time = int(time.mktime(tt.timetuple()))
+    print(un_time)

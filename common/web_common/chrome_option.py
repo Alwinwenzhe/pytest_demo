@@ -16,6 +16,8 @@ class ChromeOptions:
     def options(self):
         # chrome浏览器的配置项，可以通过修改默认参数，改变默认启动的浏览器形态
         options = webdriver.ChromeOptions()
+        # 等所有资源加载完成后，才能操作
+        options.page_load_strategy='normal'
         # 将浏览器默认设置为最大窗体
         options.add_argument('start-maximized')
         # 去掉默认提示自动化信息：警告条有可能会导致页面内容遮挡

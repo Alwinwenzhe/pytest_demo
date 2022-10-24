@@ -13,6 +13,12 @@ class Xj1101ExamInvigiTeacherDetail(object):
     # id_card是动态值，使用starts-with
     # invigi_id_card = (By.CLASS_NAME,'//td[starts-with(@class,"el-table_23_column_")][2]/div')
     invigi_id_card = (By.XPATH,'//table[@class="el-table__body"]/tbody/tr/td[2]/div')
+    # 学生姓名
+    stu_name = (By.XPATH,'//table[@class="el-table__body"]/tbody/tr/td[1]/div')
+    # 学校
+    school_name = (By.XPATH,'//table[@class="el-table__body"]/tbody/tr/td[7]/div')
+    # 考点
+    exam_place = (By.XPATH,'//table[@class="el-table__body"]/tbody/tr/td[8]/div')
 
     # 退出
     user_avatar = (By.CLASS_NAME, 'avatar-wrapper.el-dropdown-selfdefine')
@@ -23,9 +29,25 @@ class Xj1101ExamInvigiTeacherDetail(object):
         self.ya = YamlUtil()
 
     def get_invigi_id_card(self):
-        '''获取监考老师身份证号并写入根目录yaml中'''
+        '''获取监考老师身份证号并写入配置中'''
         id_card =  self.web.find_ele(*self.invigi_id_card).text
         self.ya.write_inter_yaml('invigi_teacher_id',id_card)
+
+    def get_school_name(self):
+        '''获取学校名并写入配置中'''
+        get_school_name = self.web.find_ele(*self.school_name).text
+        self.ya.write_inter_yaml('school_name', get_school_name)
+
+    def get_exam_place(self):
+        '''获取考点名写入配置'''
+        get_exam_name = self.web.find_ele(*self.exam_place).text
+        self.ya.write_inter_yaml('exam_place', get_exam_name)
+
+    def get_necessary_info(self):
+        '''获取必要信息并写入配置'''
+        self.get_invigi_id_card()
+        self.get_school_name()
+        self.get_exam_place()
 
     def log_out(self):
         '''退出登录'''

@@ -1,7 +1,11 @@
 # -- coding:utf-8 --
 import time, random, datetime
+from common.yaml_util import YamlUtil
 
 class DealTime(object):
+
+    def __init__(self):
+        self.ya = YamlUtil()
 
     def get_current_timestamp(self, jmb=False, *args, **kwargs):
         '''
@@ -19,25 +23,61 @@ class DealTime(object):
         '''获取当前得日期'''
         return time.strftime("%Y-%m-%d")
 
-    def get_cur_time_add(self,num=16, *args,**kwargs):
+    def join_time(self,hm):
         '''
-        获取当前时间并延后时间
+        将传入小时分钟，转化为时间戳
+        :param hm:
+        :return:
+        '''
+        pass
+
+
+    def get_cur_time_add_and_write(self,num=16, *args,**kwargs):
+        '''
+        获取当前时间并延后时间,并将延后得时间转化为时间戳写入配置
         :param num:   默认延后10分钟
         :param args:
         :param kwargs:
         :return:
         '''
-        return (datetime.datetime.now() + datetime.timedelta(minutes=num)).strftime("%H:%M")
+        delay_hole_time = datetime.datetime.now() + datetime.timedelta(minutes=16)
+        # 分割处理时间
+        s_time = (str(delay_hole_time).split('.')[0]).split(":")
+        if int(s_time[1][1]) - 5 > 0:
+            s_time[1] = s_time[1][0] + '5'
+        else:
+            s_time[1] = s_time[1][0] + '0'
+        hole_time = ":".join(s_time)
+        tt = datetime.datetime.strptime(hole_time, "%Y-%m-%d %H:%M:%S")
+        un_time = int(time.mktime(tt.timetuple()))
+        self.ya.write_inter_yaml('start_time_stamp', un_time)
+        delay_h_m = tt.strftime("%H:%M")
+        return delay_h_m
+
+    def get_cur_time_add(self,num=16, *args,**kwargs):
+        '''
+        获取当前时间并延后时间,并将延后得时间转化为时间戳写入配置
+        :param num:   默认延后10分钟
+        :param args:
+        :param kwargs:
+        :return:
+        '''
+        delay_hole_time = datetime.datetime.now() + datetime.timedelta(minutes=num)
+        delay_h_m =self.get_time_int(delay_hole_time.strftime("%H:%M"))
+        return delay_h_m
 
     def get_time_int(self,cur_time='17:41'):
         '''时间延迟后，分钟数收为整数'''
-        tim_list = cur_time.split(":")
-        tim_list[1] = tim_list[1][0] + '0'
-        return ":".join(tim_list)
+        s_time = cur_time.split(":")
+        if int(s_time[1][1]) - 5 > 0:
+            s_time[1] = s_time[1][0] + '5'
+        else:
+            s_time[1] = s_time[1][0] + '0'
+        return ":".join(s_time)
 
-    def morning_or_afternoon(self):
+    def morning_or_afternoon(self,start_time):
         '''判定时间是上午还是下午，这里有个问题，如果刚好卡在中午11.40左右，时间这里会出错'''
-        cur_H = self.get_cur_time_add().split(":")[0]
+        cur_H = start_time.split(":")[0]
         H = 'morning' if int(cur_H) <= 12 else 'afternoon'
         return H
 
@@ -56,6 +96,25 @@ class DealTime(object):
         rand_len = 10 ** len - 1        # 次方
         rand_int = random.randint(0,rand_len)
         return rand_int
+
+    def wait_until_start(self,start_time,wait_time=8):
+        '''
+        判定开始后才进入抽签环节
+        :param start_time: 传入时间戳格式
+        :param wait_time:
+        :return:
+        '''
+        # 仅显示当前时分
+        wait_s = wait_time*60
+        while True:
+            cur_time = int(time.time())
+            else_time = int(start_time) - cur_time
+            if else_time < wait_s:
+                print('距离抽签时间小于{0}分钟，可开始抽签'.format(wait_time))
+                break
+            else:
+                print("抽签时间未到，请等待30s")
+                time.sleep(30)
 
 if __name__ == '__main__':
     dt = DealTime()

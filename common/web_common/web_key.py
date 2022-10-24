@@ -3,6 +3,7 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.relative_locator import locate_with
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver import ActionChains
 import random
 
 class WebKey:
@@ -12,7 +13,7 @@ class WebKey:
         self.driver = driver
         self.driver.implicitly_wait(10)
 
-    def random_1(self,num=1):
+    def random_1(self,num=1,*args,**kwargs):
         '''随机1秒内休息,或大于2的随机'''
         if num == 1 :
             rand_sleep = random.randrange(1,3)
@@ -20,17 +21,17 @@ class WebKey:
         else:
             sleep(num)
 
-    def exec_js(self,js):
+    def exec_js(self,js,*args,**kwargs):
         '''当定位出问题，可以使用js执行'''
         self.driver.execute_script(js)
         self.random_1(5)
 
-    def open(self,txt):
+    def open(self,txt,*args,**kwargs):
         '''封装get'''
         self.driver.get(txt)
         self.random_1()
 
-    def get_cur_url(self):
+    def get_cur_url(self,*args,**kwargs):
         '''获取当前url'''
         return self.driver.current_url
 
@@ -39,7 +40,7 @@ class WebKey:
         self.driver.refresh()
         self.random_1()
 
-    def find_ele(self,by,value,timeout=10, poll=0.5):
+    def find_ele(self,by,value,timeout=10, poll=0.5,*args,**kwargs):
         """
         自定义一个元素查找方法
         依据用户传入的元素信息特征，然后返回当前用户想要查找元素
@@ -54,7 +55,7 @@ class WebKey:
         # finally:
         #     return ele
 
-    def find_eles(self,by,value,timeout=10, poll=0.5):
+    def find_eles(self,by,value,timeout=10, poll=0.5,*args,**kwargs):
         '''
         查找元素,增加了try except
         :param by:    查找方式，比如：id、name等
@@ -68,7 +69,7 @@ class WebKey:
             print(e)
 
 
-    def click(self,by,value,*args,**kwargs):
+    def click(self,by,value):
         '''
         点击元素
         :param by:    查找方式，比如：id、name等
@@ -77,7 +78,22 @@ class WebKey:
         '''
         self.find_ele(by,value).click()
 
-    def send(self,by,value,txt):
+    def move_to_ele_and_click(self,driver,ele1,ele2,*args,**kwargs):
+       '''
+       移动鼠标到某个元素，并点击
+       :param driver:
+       :param ele1: 移动到这个元素
+       :param by: 点击元素的by方式
+       :param value: 点击元素得value值
+       :param args:
+       :param kwargs:
+       :return:
+       '''
+       el1 = self.find_ele(*ele1)
+       ActionChains(driver).move_to_element(el1).perform()
+       self.click(*ele2)
+
+    def send(self,by,value,txt,*args,**kwargs):
         '''
         填写内容
         :param by:    查找方式，比如：id、name等
@@ -88,7 +104,7 @@ class WebKey:
         self.find_ele(by,value).clear()
         self.find_ele(by,value).send_keys(txt)
 
-    def web_wait(self,by,value):
+    def web_wait(self,by,value,*args,**kwargs):
         '''
         显示等待某个元素
         :param by:    查找方式，比如：id、name等
@@ -107,11 +123,11 @@ class WebKey:
         '''
         self.driver.quit()
 
-    def wait(self,time_):
+    def wait(self,time_,*args,**kwargs):
         '''强制等待时间'''
         sleep(int(time_))
 
-    def switch_frame(self,by,value=None):
+    def switch_frame(self,by,value=None,*args,**kwargs):
         '''
         通过id，name，index，webelement定位方法来切换窗口
         :param name:可以是：id，name，index
@@ -124,11 +140,11 @@ class WebKey:
             self.driver.switch_to.frame(self.find_ele(by,value))
         self.random_1()
 
-    def switch_default(self):
+    def switch_default(self,*args,**kwargs):
         '''切换到默认的frame'''
         self.driver.switch_to.default_content()
 
-    def switch_handle(self,close=False,index=1):
+    def switch_handle(self,close=False,index=1,*args,**kwargs):
         '''
         通过窗口句柄或窗口名字切换到新窗口
         第一个句柄默认是0，新打开的默认句柄为1
@@ -140,7 +156,7 @@ class WebKey:
         self.driver.switch_to.window(handles[index])
         self.random_1()
 
-    def relative_locator(self,direct,by,value,ele):
+    def relative_locator(self,direct,by,value,ele,*args,**kwargs):
         '''
         相对定位,这里写的好像有问题
         :param direct:
@@ -168,7 +184,7 @@ class WebKey:
         return self.driver.find_element(locate_with(by_method[by], value)).direction[direct](ele)
 
     #other相对定位器
-    def locator_with(self,method,value,by,el_value,direction):
+    def locator_with(self,method,value,by,el_value,direction,*args,**kwargs):
         el = self.find_ele(by,el_value)
         direction_dict = {
              'up': "above",
@@ -190,7 +206,7 @@ class WebKey:
             }
         return  self.driver.find_element(getattr(locate_with(method_dict.get(method),value))),direction_dict.get(direction)(el)
 
-    def assert_text(self,by,value,txt):
+    def assert_text(self,by,value,txt,*args,**kwargs):
         '''
         判定执行后，通过识别预期元素判定执行结果
         :param name:
@@ -207,7 +223,7 @@ class WebKey:
             return False
         self.random_1()
 
-    def assert_url(self, expect_url):
+    def assert_url(self, expect_url,*args,**kwargs):
         '''
         通过当前url，判断执行是否成功
         '''

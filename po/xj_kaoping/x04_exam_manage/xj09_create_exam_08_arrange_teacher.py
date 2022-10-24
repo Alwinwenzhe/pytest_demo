@@ -52,6 +52,7 @@ class Xj09CreateExam08ArrangeTeacher(object):
     def arrange_invigilation(self):
         '''安排监考老师',默认一个考点2个老师，使用自动分配组长'''
         self.web.click(*self.invigilation_area)
+        self.web.wait(1)
         self.web.click(*self.name_tab)
         self.choose_invigi(self.ya.read_extract_yaml('invigilation_num'))
         ele = self.web.find_ele(*self.invigilation_last_id)
@@ -62,6 +63,7 @@ class Xj09CreateExam08ArrangeTeacher(object):
 
     def arrrange_marking(self):
         '''安排阅卷老师'''
+        self.web.wait(1)
         self.web.click(*self.marking_teacher)
         self.web.click(*self.marking_area)
         num = int(self.ya.read_extract_yaml('marking_num')) + 1

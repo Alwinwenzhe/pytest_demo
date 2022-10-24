@@ -42,7 +42,7 @@ class XJ02_Create_Exam_01_Base_Info(object):
     # 其它设置
     other_settings = (By.ID,'tab-otherSetting')
     notice = (By.XPATH,'//*[@id="tinymce"]/p')
-    save_buttion = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[4]/button/span')
+    save_buttion = (By.CLASS_NAME,'el-button.el-button--primary.el-button--medium')
 
     def __init__(self,driver):
         self.web = WebKey(driver)
@@ -67,10 +67,10 @@ class XJ02_Create_Exam_01_Base_Info(object):
         self.web.exec_js("document.getElementsByClassName('el-input__inner')[3].removeAttribute('readonly')")
         self.web.send(*self.exam_date,self.tim.get_cur_date())
         self.web.click(*self.base_inf)
+        for i in range(3):
+            self.web.click(*self.answer_time)
         for i in range(2):
-            self.web.click(*self.answer_time,wait=False)
-        for i in range(9):
-            self.web.click(*self.exam_interval,wait=False)
+            self.web.click(*self.exam_interval)
         self.web.click(*self.enable_ai)
         # AI中得内容未操作
         self.web.click(*self.subject)
@@ -79,28 +79,29 @@ class XJ02_Create_Exam_01_Base_Info(object):
     def base_info_choose_time(self):
         '''选择考试时间，如果是下午，那么上午随意选；反之一样'''
         # 先去除只读
-        self.web.exec_js("document.getElementsByClassName('el-input__inner')[6].removeAttribute('readonly')")
-        self.web.exec_js("document.getElementsByClassName('el-input__inner')[7].removeAttribute('readonly')")
-        self.web.exec_js("document.getElementsByClassName('el-input__inner')[8].removeAttribute('readonly')")
-        self.web.exec_js("document.getElementsByClassName('el-input__inner')[9].removeAttribute('readonly')")
-        if self.tim.morning_or_afternoon() == 'afternoon':
+        for i in range(6, 10):
+            self.web.exec_js("document.getElementsByClassName('el-input__inner')[{0}].removeAttribute('readonly')".format(i))
+        start_time = self.tim.get_cur_time_add_and_write()
+        if self.tim.morning_or_afternoon(start_time) == 'afternoon':
             self.web.send(*self.morning_start,'00:00')
             self.web.click(*self.base_inf)
             self.web.send(*self.morning_end,'00:05')
             self.web.click(*self.base_inf)
             self.web.click(*self.base_inf)
-            self.web.send(*self.afternoon_start,self.tim.get_time_int(self.tim.get_cur_time_add()))
+            self.web.send(*self.afternoon_start,start_time)
             self.web.click(*self.base_inf)
-            self.web.send(*self.afternoon_end,self.tim.get_time_int(self.tim.get_cur_time_add(26)))
+            self.web.send(*self.afternoon_end,self.tim.get_time_int(self.tim.get_cur_time_add(35)))
         else:
-            self.web.send(*self.morning_start, self.tim.get_time_int(self.tim.get_cur_time_add()))
+            self.web.send(*self.morning_start, start_time)
             self.web.click(*self.base_inf)
-            self.web.send(*self.morning_end, self.tim.get_time_int(self.tim.get_cur_time_add(26)))
+            self.web.send(*self.morning_end, self.tim.get_time_int(self.tim.get_cur_time_add(31)))
             self.web.click(*self.base_inf)
             self.web.click(*self.base_inf)
             self.web.send(*self.afternoon_start, '12:00')
             self.web.click(*self.base_inf)
             self.web.send(*self.afternoon_end, '12:05')
+        self.ya.write_inter_yaml('exam_start_time',start_time)
+
 
     def proctor_setting(self):
         '''基本信息—监考设置'''

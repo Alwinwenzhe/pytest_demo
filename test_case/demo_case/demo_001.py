@@ -1,24 +1,17 @@
-# -- coding:utf-8 --
-import time
+import cv2, pyautogui, time
 
-import pytest
-
-@pytest.fixture(scope='function',params=['成龙','甄子丹','周杰伦'],ids=['one','two','three'])
-def my_fixture(request):            # 这里得request自动接受params得传值，参数request是固定写法
-    # 两种传参模式
-    # print('\n前置')
-    # yield time.time()
-    # print('\n后置')
-    return request.param           # 注意这里不是params，固定写法
-
-class TestMas1:
-
-    def test_01_baili(self):
-        print('\n输出百里')
-
-    @pytest.mark.demo
-    def test_02_jialuo(self,my_fixture):    # 这里是接受request.param 返回得值
-        print('----------' + str(my_fixture))
-
-if __name__ == '__main__':
-    pytest.main(['./demo_001.py'])
+sour_home = cv2.imread(r'../../pic/xj/stu/001_pc_home.png')
+goal_img_path = cv2.imread(r'../../pic/xj/stu/001_pc_home_stu_client.png')
+# 目标截图
+goal_pic = cv2.imread(goal_img_path)
+sour = cv2.imread(sour_home)
+# 读取目标截图的高\宽
+heigh,width,channel = goal_pic.shape
+# 进行模板的匹配,最后的参数就是匹配方法
+result = cv2.matchTemplate(sour,goal_pic,cv2.TM_SQDIFF_NORMED)
+# 解析匹配区域左上角坐标,返回四个坐标
+for i in range(4):
+    print("正在点击第{0}个点".format(i+1))
+    loc = cv2.minMaxLoc(result)[i]
+    print(loc)
+    time.sleep(3)

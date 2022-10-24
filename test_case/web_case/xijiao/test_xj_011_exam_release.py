@@ -17,4 +17,4 @@ class TestXj011ExamRelease(object):
         exam_list.check_exam()
         exam_detail.create_sess()
         exam_list.audit_exam()
-        assert exam_list.web.find_eles(By.XPATH,'//div[text()=" 已发布 "]')
+        assert exam_list.web.find_eles(By.XPATH,'//span[text()="查看"]')
