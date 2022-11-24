@@ -76,7 +76,7 @@ class Xj06CreateExam05InformationUpload(object):
         self.web.click(*self.upload_stu_data)
         self.web.click(*self.upload_area)
         self.web.wait(1)
-        win_upload(r'J:\now_job\西交智汇\data\学校\AT_高新-3\成都七中\学生_6.xlsx')
+        win_upload(r'J:\now_job\西交智汇\data\学校\AT_高新-3\成都七中\AT_学生_1.xlsx')
         self.web.wait(3)
         self.web.exec_js(self.stu_enter_js)
         self.web.exec_js(self.stu_alert_enter_js)

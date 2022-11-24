@@ -90,11 +90,11 @@ class XJ02_Create_Exam_01_Base_Info(object):
             self.web.click(*self.base_inf)
             self.web.send(*self.afternoon_start,start_time)
             self.web.click(*self.base_inf)
-            self.web.send(*self.afternoon_end,self.tim.get_time_int(self.tim.get_cur_time_add(35)))
+            self.web.send(*self.afternoon_end,self.tim.get_time_int(self.tim.get_cur_time_add(60)))
         else:
             self.web.send(*self.morning_start, start_time)
             self.web.click(*self.base_inf)
-            self.web.send(*self.morning_end, self.tim.get_time_int(self.tim.get_cur_time_add(31)))
+            self.web.send(*self.morning_end, self.tim.get_time_int(self.tim.get_cur_time_add(60)))
             self.web.click(*self.base_inf)
             self.web.click(*self.base_inf)
             self.web.send(*self.afternoon_start, '12:00')

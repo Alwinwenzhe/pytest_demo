@@ -28,7 +28,7 @@ class CvGui(object):
         source_home = cv2.imread(sour_img)
         # 目标截图
         goal_pic = cv2.imread(goal_img)
-        # 读取目标截图的高\宽
+        # 读取目标截图的高\宽,channel？
         heigh,width,channel = goal_pic.shape
         # 进行模板的匹配,最后的参数就是匹配方法
         result = cv2.matchTemplate(source_home,goal_pic,cv2.TM_SQDIFF_NORMED)
@@ -75,5 +75,5 @@ if __name__ == '__main__':
     img = CvGui()
     # img.routine(r".\pic\xj_teacher.png","教师端")
     # img.routine(r"..\..\pic\xj_teacher.png","教师端")      # 相对路劲，寻找根目录下的pic文件夹
-    # img.get_screenshot(r'..\..\pic\xj\stu\test.jpg')
-    print(img.get_xy(r"..\..\pic\xj\stu\001_pc_home.jpg",r'..\..\pic\xj\stu\001_pc_home_stu_client.png'))
+    img.get_screenshot(r'..\..\pic\xj\tch\pc_home.jpg')
+    # print(img.get_xy(r"..\..\pic\xj\stu\001_pc_home.jpg",r'..\..\pic\xj\stu\001_pc_home_stu_client.png'))

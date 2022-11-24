@@ -231,6 +231,30 @@ class WebKey:
         result = True if cur_url == expect_url else False
         return result
 
+    def is_toast_exist(self, mes):
+        '''
+        自定义一个工具函数，可以接收用户传递的部分 toast 信息，然后返回一个布尔值，来告诉用户，目标 toast 到底是否存在
+        :param mes:
+        :return:
+        '''
+        try:
+            self.get_toast_content(mes)
+            return True
+        except Exception:
+            # 如果目标 toast 不存在那么就说明我们的实际结果和预期结果不一样
+            # 因此我们想要的是断言失败
+            return False
+
+    def get_toast_content(self, message):
+        '''
+        自定义一个获取 toast内容的方法
+        :param message:
+        :return:
+        '''
+        tmp_feature = (By.XPATH, "//*[contains(@text,'%s')]" % message)
+        ele = self.find_ele(*tmp_feature)
+        return ele.text
+
 
 if __name__ == '__main__':
     wk = WebKey()

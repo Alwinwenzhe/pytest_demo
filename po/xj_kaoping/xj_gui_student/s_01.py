@@ -10,8 +10,9 @@ class S01(object):
 
     def __init__(self,root_path):
         self.cv = CvGui()
-        # self.pic_path = r'../../../pic/xj/stu/'
-        self.pic_path = root_path
+        pyautogui.PAUSE = 1  # 调用在执行动作后暂停的秒数
+        pyautogui.FAILSAFE = True  # 启用自动防故障功能
+        self.pic_path = root_path + '/stu/'
         self.ya = YamlUtil()
 
     def get_screen(self,pic_name):
@@ -38,19 +39,59 @@ class S01(object):
         pyautogui.press(['backspace'])
         pyautogui.typewrite(con)
 
-    def get_server_ip(self):
-        '''获取校级服务器ip'''
-        server_ip = self.ya.read_extract_yaml('ip')
-        ser_ip = (server_ip.split("//")[1]).split(":")[0]
-        ser_ip = ser_ip + ":" + "8080"
-        return ser_ip
-
     def get_exam_place(self):
         '''获取考点名'''
         return self.ya.read_extract_yaml('exam_place')
 
+    def get_server_ip(self):
+        '''获取配置文件中服务器ip'''
+        self.ya.get_server_ip()
+
+    def pre_exam(self):
+        # 启动并设置校级服务器
+        self.routine('001_pc_home.jpg', '001_pc_home_stu_client.png', click='d', name='001_pc_home_stu_client.png')
+        time.sleep(3)
+        self.routine('002_stu_home.jpg', '002_stu_home_set.jpg', name='002_stu_home_set.jpg')
+        self.routine('002_stu_home_oper.jpg', '002_stu_home_oper_pwd.jpg', name='002_stu_home_oper_pwd.jpg')
+        self.input_con('123456')
+        self.routine('002_stu_home_oper.jpg', '002_stu_home_oper_enter.jpg', name='002_stu_home_oper_enter.jpg')
+        time.sleep(2)
+        # 修改校级服务器地址
+        self.routine('003_stu_base_set.jpg', '003_stu_base_set_sch_server.jpg',
+                       name='003_stu_base_set_sch_server.jpg')
+        self.clear_and_input_con(self.get_server_ip())
+        # 修改考点
+        self.routine('003_stu_base_set.jpg', '003_tch_base_set_exam_place.jpg', add_x=200,
+                       name='003_tch_base_set_exam_place.jpg')
+        self.routine('003_tch_base_set_exam_place.jpg', '003_stu_base_set_exam_place_search.jpg',
+                       name='003_stu_base_set_exam_place_search.jpg')
+        self.input_con(self.get_exam_place())
+        self.routine('003_tch_base_set_exam_place.jpg', '003_stu_base_set_exam_place_sch_g.jpg', add_y=100,
+                       name='003_stu_base_set_exam_place_sch_g.jpg')
+        # 默认物理考场
+        # 座位号
+        self.routine('003_stu_base_set.jpg', '003_stu_base_set_seat_g.jpg', add_x=100,
+                       name='003_stu_base_set_seat_g.jpg')
+        # 在上一个基础上增加1
+        self.routine('003_stu_base_set.jpg', '003_stu_base_set_seat_g.jpg', add_y=110,
+                       name='003_stu_base_set_seat_g.jpg')
+        # 提交
+        self.routine('003_stu_base_set.jpg', '003_stu_base_set_submit_g.jpg')
+        self.routine('003_stu_base_set_save.jpg', '003_stu_base_set_save_replace_g.jpg')
+        self.routine('003_stu_base_set.jpg', '003_stu_base_set_logout_g.jpg')
+        time.sleep(6)
+
+    def start_exam(self):
+        '''开始考试'''
+        pass
+
+    def exam_main(self):
+        '''考试入口'''
+        self.pre_exam()
+        self.start_exam()
+
 
 if __name__ == '__main__':
-    s = S01(r'../../../pic/xj/stu/')
-    s.get_screen('003_stu_base_set_save.jpg')
+    s = S01(r'../../../pic/xj')
+    s.get_screen('002_tch_home.jpg')
     # s.gui_click('001_pc_home.jpg','001_pc_home_stu_client.png',click='d')

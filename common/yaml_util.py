@@ -105,7 +105,12 @@ class YamlUtil:
             print("Error: " + format(str(e)))
             raise
 
-
+    def get_server_ip(self):
+        '''获取校级服务器ip'''
+        server_ip = self.read_extract_yaml('ip')
+        ser_ip = (server_ip.split("//")[1]).split(":")[0]
+        ser_ip = ser_ip + ":" + "8080"
+        return ser_ip
 
 if __name__ == '__main__':
     yal = YamlUtil()

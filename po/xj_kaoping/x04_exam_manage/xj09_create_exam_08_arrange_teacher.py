@@ -91,8 +91,10 @@ class Xj09CreateExam08ArrangeTeacher(object):
         self.web.wait(2)
         eles = self.web.find_eles(*self.invit_teachers)
         self.web.wait(2)
-        for i in eles[num::]:
-            i.click()
+        for v in eles[num::]:
+            v.click()
+
+
 
 
 

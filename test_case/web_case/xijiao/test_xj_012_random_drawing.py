@@ -38,7 +38,8 @@ class TestXj012RandomDrawing(object):
         kw.drawing_lot()
         # 验证抽签按钮变为打印按钮
         assert kw.web.find_ele(By.CLASS_NAME,"el-button.search-btn.el-button--default.el-button--medium.el-dropdown-selfdefine")
-        kw.web.quit()
+        kw.log_out()
+
 
 
 

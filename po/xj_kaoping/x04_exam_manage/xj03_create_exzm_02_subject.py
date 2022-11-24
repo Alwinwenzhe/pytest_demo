@@ -13,13 +13,13 @@ class XJ03_Create_Exam_02_Subject(object):
 
 
     #从题库选择
-    sub_library = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[1]/div[2]/div/span[2]')
+    sub_library = (By.CLASS_NAME,'iconfont.build.icon-a-24-3333333')
     #   题目搜索
     subject_title = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/form/div[1]/div/div/div/input')
     #   查询按钮
-    search = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[3]/div/div/div[2]/div[2]/div[1]/div[2]/form/div[5]/span[1]/div/div/button/i')
+    search = (By.XPATH,'//span[text()="查询"]')
     #   选择全部
-    choose_all = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[3]/div/div/div[2]/div[2]/div[3]/div[1]/button[1]')
+    choose_all = (By.XPATH,'//span[text()=" 选择全部 "]')
     #   确定 有两种方式
     # enter = (By.XPATH,'//*[@id="app"]/div/div[2]/section/div[2]/div/div[3]/div[3]/div/div/div[3]/span/button[2]/span')
     enter_js = "document.getElementsByClassName('el-button el-button--primary el-button--medium')[2].click()"
