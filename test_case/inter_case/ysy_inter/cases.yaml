@@ -1,0 +1,51 @@
+-
+  name: 一生约--添加用户步数
+  request:
+    url: https://api.yishengyue.cn/api/v1/member/addMenberStep
+    method: post
+    headers:
+      Content-Type: application/json; charset=UTF-8
+      enterpriseId: 1122c78ae5d140a5acbaa9e75c8b8994
+    params:
+      stepNum: 888
+      userId: 15828022852
+  validate:
+  -   equals: {status_code: 200}
+  -   contains: code":0
+
+
+
+-
+  name: 一生约--添加用户步数--步数为空
+  request:
+    url: https://api.yishengyue.cn/api/v1/member/addMenberStep
+    method: post
+    headers:
+      Content-Type: application/json; charset=UTF-8
+      enterpriseId: 1122c78ae5d140a5acbaa9e75c8b8994
+    params:
+      stepNum: 
+      userId: 15828022852
+  validate:
+  -   equals: {status_code: 200}
+  -   contains: code":0
+
+
+
+-
+  name: 一生约--添加用户步数--userId错误
+  request:
+    url: https://api.yishengyue.cn/api/v1/member/addMenberStep
+    method: post
+    headers:
+      Content-Type: application/json; charset=UTF-8
+      enterpriseId: 1122c78ae5d140a5acbaa9e75c8b8994
+    params:
+      stepNum: 666
+      userId: 
+  validate:
+  -   equals: {status_code: 200}
+  -   contains: code":0
+
+
+
