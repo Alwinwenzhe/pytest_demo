@@ -34,7 +34,7 @@ class XJ03_Create_Exam_02_Subject(object):
     def choose_subject(self):
         '''选择自己创建得对应科目全部考题'''
         self.web.click(*self.sub_library)
-        self.web.send(*self.subject_title,'cwz')
+        self.web.send(*self.subject_title,'质量')
         self.web.click(*self.search)
         self.web.click(*self.choose_all)
         self.web.exec_js(self.enter_js)

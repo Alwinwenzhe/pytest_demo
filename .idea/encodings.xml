@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
-    <file url="file://$PROJECT_DIR$/common/app_common/app_server.py" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/common/app_common/base.py" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/common/app_common/base_driver.py" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/common/app_common/dos_cmd.py" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/common/app_common/write_user_command.py" charset="GBK" />
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

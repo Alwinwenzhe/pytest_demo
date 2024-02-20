@@ -1,3 +1,14 @@
 [ERROR 2022-05-04 11:16:19]This is error
 [ERROR 2022-05-11 11:09:13]Response body Does not contain expected_msg, expected_msg is code": 0
 [ERROR 2022-07-14 15:09:41]This is error
+[ERROR 2024-02-20 10:46:54]Response body Does not contain expected_msg, expected_msg is status":200
+[ERROR 2024-02-20 11:32:08]error log：get param fail
+[ERROR 2024-02-20 11:32:47]error log：get param fail
+[ERROR 2024-02-20 11:57:01]error log：get param fail
+[ERROR 2024-02-20 12:00:03]error log：get param fail
+[ERROR 2024-02-20 14:23:28]error log：get param fail
+[ERROR 2024-02-20 14:25:01]error log：get param fail
+[ERROR 2024-02-20 14:32:44]error log：get param fail
+[ERROR 2024-02-20 14:46:46]error log：get param fail
+[ERROR 2024-02-20 14:46:48]error log：get param fail
+[ERROR 2024-02-20 14:52:35]error log：get param fail

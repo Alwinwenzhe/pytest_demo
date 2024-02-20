@@ -43,8 +43,9 @@ class OperateJson(object):
         """
         # 单独读取文件
         init_json = self.read_json()
-        for key in kwargs.keys():
-            init_json[key] = kwargs[key]
+        init_json[args[0]] = args[1]
+        # for key in init_json.keys():
+        #     init_json[args[0]] = args[1]
         with open(self.file_path, 'w', encoding='UTF-8') as f:
             json.dump(init_json, f)         # dump把数据类型转换成字符串并存储在文件中
 

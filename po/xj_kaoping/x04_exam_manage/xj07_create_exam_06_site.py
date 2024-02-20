@@ -15,7 +15,7 @@ class Xj07CreateExam06Site(object):
     # 考点筛选
     screen_site = (By.XPATH,'//span[text()="考点筛选"]')
     # 选择考点
-    choo_site = (By.XPATH,'//span[text()="AT_成都七中_东区总校_cwz"]')
+    choo_site = (By.XPATH,'//span[text()="梅州市学艺中学"]')
     # 确定
     enter_js = "document.getElementsByClassName('el-button el-button--primary el-button--medium')[1].click()"
     # 保存并下一步查看考生

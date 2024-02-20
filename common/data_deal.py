@@ -18,8 +18,7 @@ class DataDeal(object):
         self.conf = Config.Config()
         self.excel = excel_handler.ExcelHandler()
         self.reqe = req_reload.ReqReload()
-        # self.test = asert.Assertions()
-        self.test = asert.Asert
+        self.test = asert.Asert()
         self.dl = DealTime()
 
     def choose_envir(self,envir):
@@ -211,11 +210,14 @@ class DataDeal(object):
         for i in list_comma:
             list = i.split("/")
             list_last = list[-1]
-            res_value = json.loads(res, encoding='utf-8')  # 序列化字符串或json对象成为python对象
+            res_value = json.loads(res)  # 序列化字符串或json对象成为python对象
+            # res_value = json.loads(res)
             try:
                 for i in range(len(list)):
                     if str(list[i]).isdigit():  # 如果是数字
                         res_value = res_value[int(list[i])]
+                    elif list[i] == "":
+                        pass
                     else:
                         res_value = res_value[list[i]]
             except Exception as e:
@@ -230,9 +232,11 @@ class DataDeal(object):
         :return:
         '''
         request_method, expect, api_url, headers, params, global_var = self.param_get_deal(case)
-        response = self.reqe.req(request_method, api_url, params, headers, global_var)
+        response = self.reqe.req(request_method, api_url, params, headers)
         if response['body']:
-            self.test.assert_common(response['code'], response['body'], expect, response['time_consuming'])
+            cod, response_bod, expect1, response_time = response['code'],response['body'], expect, response['time_consuming']
+            self.test.assert_common(cod, response_bod, expect1, response_time)
+            # self.test.assert_common(response['code'], response['body'], expect, response['time_consuming'])
         else:                       #处理PHP返回的页面请求
             self.test.assert_easy(response['code'],response['time_consuming'])
         consts.RESULT_LIST.append('True')
@@ -270,10 +274,14 @@ class DataDeal(object):
         '''处理yaml中得变量数据'''
         yaml_data = '${get_base_url(ysy_base_url)}'
 
+    def get_current_timestamp(self):
+        return self.dl.get_current_timestamp()
+
 
 if __name__ == '__main__':
     ut = DataDeal()
-    print(ut.get_current_timestamp(jmb=1))
+    # print(self.dt.get_current_timestamp(jmb=1))
+    # print(self.dl.get_cu)
     print(ut.jmb_sign_md5())
     print(ut.jmg_mobile_sign())
     print(ut.randint_8())

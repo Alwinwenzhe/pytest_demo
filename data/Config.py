@@ -6,8 +6,10 @@ import os, re
 # 工程中配置中有相对路径即可替代
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 脚本路径
-API_CASE_PATH = BASE_PATH + r'\data\base_student.xlsx'
+# API_CASE_PATH = BASE_PATH + r'\data\base_student.xlsx'
+API_CASE_PATH = BASE_PATH + r'\data\jnt_inter_case.xls'
 QIUYI_CASE_PATH = BASE_PATH + r'\data\web_test_qiuyi.xlsx'
+HC_CASE_PATH = BASE_PATH + r'\data\华测用例.xlsx'
 
 class Config:
     # titles:
@@ -68,12 +70,8 @@ class Config:
     # 雨花斋正式环境
     YHZ_USER = 'yhz_user'
 
-    # [mail]
-    VALUE_SMTP_SERVER = "smtpserver"
-    VALUE_SENDER = "sender"
-    VALUE_RECEIVER = "receiver"
-    VALUE_USERNAME = "username"
-    VALUE_PASSWORD = "password"
+    # 建能通APP測試環境
+    JNT_APP_TEST = 'jnt_app_host'
 
     # path
     path_dir = str(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
@@ -145,6 +143,8 @@ class Config:
         self.jmb_t_db_user = self.get_conf(Config.JMB_T_DB_USER)
         self.jmb_t_db_pwd = self.get_conf(Config.JMB_T_DB_PWD)
         self.jmb_t_db_port = self.get_conf(Config.JMB_T_DB_PORT)
+        # 建能通測試環境
+        self.jnt_app_test = self.get_conf(Config.JNT_APP_TEST)
 
     def get_conf(self,value, title= 'T'):
         """

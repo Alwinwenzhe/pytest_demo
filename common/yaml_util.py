@@ -117,8 +117,8 @@ if __name__ == '__main__':
     # old_file = yal.root_path + r'/test_case/inter_case/test_ysy_002_add_step.yaml'
     # add_step_cases = deal_csv.FromCsvToJson(yal.root_path + '/test_case/inter_case/add_step.csv')
     # yal.env_raplace_yaml(add_step_cases,old_file)
-    # print(yal.root_path)
+    print(yal.file_path)
     # yal.write_inter_yaml({'ex_name': 123},r'/data/temp_data.yaml')
-    print(yal.read_extract_yaml('marking_num'))
-    yal.write_inter_yaml('marking_num',2)
-    print(yal.read_extract_yaml('marking_num'))
+    # print(yal.read_extract_yaml('marking_num'))
+    # yal.write_inter_yaml('marking_num',2)
+    # print(yal.read_extract_yaml('marking_num'))

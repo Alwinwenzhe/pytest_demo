@@ -16,9 +16,7 @@ from common import consts
 from common import my_log
 from data.Config import Config
 
-
 class SendMail:
-
 
     def __init__(self):
         self.config = Config()

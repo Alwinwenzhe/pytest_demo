@@ -1,1 +1,1 @@
-[]
+[{"values":["Chrome"],"name":"Browser"},{"values":["121"],"name":"Browser.Version"},{"values":["Test"],"name":"Env"},{"values":["192.168.2.137"],"name":"IP"},{"values":["2.27.0"],"name":"Allure-Pytest.Version"}]

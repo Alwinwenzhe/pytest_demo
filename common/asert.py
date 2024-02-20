@@ -13,7 +13,7 @@ from common import consts
 import json,requests, pytest
 
 
-class Asert:
+class Asert(object):
 
     def __init__(self):
         self.log = my_log.MyLog()
@@ -26,7 +26,7 @@ class Asert:
         :return:
         """
         try:
-            assert code == expected_code
+            assert int(code) == int(expected_code)
             return True
         except Exception as e:
             print("\033[32;1m出现错误如下\033[0m")
@@ -86,7 +86,6 @@ class Asert:
             print("\033[32;1m出现错误如下\033[0m")
             self.log.error("Response body != expected_msg, expected_msg is %s, body is %s" % (expected_msg, body))
             consts.RESULT_LIST.append('fail')
-
             raise
 
     def assert_time(self, time, expected_time):
@@ -103,7 +102,6 @@ class Asert:
             print("\033[32;1m出现错误如下\033[0m")
             self.log.error("Response time > expected_time, expected_time is %s, time is %s" % (expected_time, time))
             consts.RESULT_LIST.append('fail')
-
             raise
 
 

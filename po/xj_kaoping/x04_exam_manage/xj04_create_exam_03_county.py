@@ -19,7 +19,7 @@ class Xj04CreateExam03County(object):
 
     # screening_county_js_click = "document.elementFromPoint(1100,660).click()"
     # 直接定位；更准确得是通过名字定位AT_高新东区_cwz，找兄弟
-    east_area = (By.XPATH,'//span[contains(text(),"AT_高新东区_cwz")]')
+    east_area = (By.XPATH,'//span[contains(text(),"梅州区")]')
     # 确定
     enter_js = "document.getElementsByClassName('el-button el-button--primary el-button--medium')[1].click()"
     # 保存并下一步

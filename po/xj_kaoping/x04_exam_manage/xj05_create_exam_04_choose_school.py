@@ -17,7 +17,7 @@ class Xj05CreateExam04ChooseSchool(object):
     screen_school= (By.CLASS_NAME,'iconfont.icon.icon-a-244')
     # screen_school = (By.XPATH,'//span[contains(text(),"学校筛选"]')
     # 定位七中
-    AT_7 = (By.XPATH,'//span[contains(text(),"AT_成都七中_东区总校_cwz")]')
+    AT_7 = (By.XPATH,'//span[contains(text(),"梅州市学艺中学")]')
     # 确定
     enter_js = ("document.getElementsByClassName('el-button el-button--primary el-button--medium')[1].click()")
     # 保存并下一步信息上传

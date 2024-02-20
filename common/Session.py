@@ -5,15 +5,14 @@
 #
 # """
 # 封装获取cookie方法
-#
 # """
 #
 # import requests
 #
-# from Common import new_tool_a
-# from Common import Log
-# from Common import operate_json
-# from Conf import Config
+# from common import new_tool_a
+# from common import Log
+# from common import operate_json
+# from conf import Config
 #
 #
 # # class Session:

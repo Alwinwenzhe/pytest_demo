@@ -1,7 +1,5 @@
-import cv2, pyautogui, time
+import json
 
-if __name__ == '__main__':
-    list_a = [1,2,3,4,6]
-    for k,v in enumerate(list_a):
-        if k == len(list_a)-1:
-            print(v)
+demo = ('access_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJjaGVud2VuemhlIiwic2NvcGUiOlsiYWxsIl0sImNsaWVudCI6IkFQUCIsImV4cCI6MTcxMTAwOTk1NywiYXV0aG9yaXRpZXMiOlsiQURNSU5JU1RSQVRPUiJdLCJqdGkiOiJjVE1Jc0pmemFBWHc0dUUxZ1ZiOS0yWFBUeGMiLCJjbGllbnRfaWQiOiJQTVMiLCJzdGF0dXMiOjIwMH0.pyecPRTV_BdAs_qOEq3kQBdtNK7IER4peFlrecCmLu8')
+
+print(demo[0])

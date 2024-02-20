@@ -20,19 +20,20 @@ class XJ02_Create_Exam_01_Base_Info(object):
     #   考试时间减
     answer_time = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[3]/div/div/span[1]')
     exam_interval = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[4]/div/div/span[1]')
-    enable_ai = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[5]/div/div[1]/span')
-    subject = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[8]/div/div/label[1]/span[1]/span')
-    morning_start = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[9]/div[1]/div/div/div/input')
-    morning_end = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[9]/div[3]/div/div/div/input')
-    afternoon_start = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[10]/div[1]/div/div/div/input')
-    afternoon_end = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[10]/div[3]/div/div/div/input')
+    enable_ai = (By.XPATH,'//div[@class="el-form-item isAI el-form-item--medium"]/div/div')
+    # 考试科目
+    subject = (By.XPATH,'//span[@class="el-checkbox__input"]')
+    morning_start = (By.XPATH,'//div[@class="el-date-editor el-input el-input--medium el-input--prefix el-input--suffix el-date-editor--time-select"][1]/input')
+    morning_end = (By.XPATH,'//input[@placeholder="结束时间"]')
+    afternoon_start = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[11]/div[1]/div/div/div/input')
+    afternoon_end = (By.XPATH,'//*[@id="pane-infoSetting"]/div/form/div[11]/div[3]/div/div/div/input')
 
     # 监考设置
     proctor_set = (By.ID,'tab-moniterSetting')
     # 监考老师人数
-    invigilation_text = (By.XPATH,'//*[@id="pane-moniterSetting"]/div/form/div[3]/div/div/div/input')
+    invigilation_text = (By.XPATH,'//span[text()="每个考场"]/../div/div/input')
     # 阅卷次数
-    marking_text = (By.XPATH,'//input[@placeholder="请填写阅卷次数"]')
+    marking_text = (By.XPATH,'//div[@class="el-form-item__error"]/../div/div/input')
 
     # 考题分布设置
     distribution_of_exam = (By.ID,'tab-spreadSetting')

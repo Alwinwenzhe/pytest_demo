@@ -11,6 +11,7 @@ class Xj1100ExamListExamDetail(object):
 
     # 生成场次
     create_session = (By.XPATH,'//span[text()=" 生成场次 "]/..')
+    enter_session = (By.XPATH,'//span[text()="确定"]')
     retur = (By.XPATH,'//span[text()="返回"]')
 
     # 监考老师模块
@@ -24,8 +25,12 @@ class Xj1100ExamListExamDetail(object):
     def create_sess(self):
         '''生成场次'''
         self.web.click(*self.create_session)
+        self.web.click(*self.enter_session)
         self.web.wait(2)
         self.web.click(*self.retur)
+
+    def choose_site_outer(self):
+        '''選擇'''
 
     def enter_invigilation_teachers(self):
         '''进入监考老师模块'''
@@ -34,6 +39,7 @@ class Xj1100ExamListExamDetail(object):
     def enter_check_school(self):
         '''进入查看学校'''
         self.web.click(*self.check_school)
+
 
 
 

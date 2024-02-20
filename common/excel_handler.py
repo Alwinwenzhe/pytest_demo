@@ -11,16 +11,16 @@ class ExcelHandler(object):
     oper_j = operate_json.OperateJson()
     con = Config.Config()
 
-    def read_excel(self, sheet_index=0):
+    def read_excel(self,sheet_path):
         '''
         读取固定excel,返回指定sheet内容
         :return:
         '''
-        book = xlrd.open_workbook(Config.API_CASE_PATH)  # 注意：这里已经写死了是接口测试对应的文件路径，并没有参数化
-        table = book.sheet_by_index(sheet_index)        # 通过索引顺序获取sheet
+        book = xlrd.open_workbook(sheet_path)  # 注意：这里已经写死了是接口测试对应的文件路径，并没有参数化
+        table = book.sheet_by_index(0)        # 通过索引顺序获取sheet
         return table
 
-    def get_excel_data(self,sheet_index=0):
+    def get_excel_data(self,sheet_path=Config.API_CASE_PATH):
         '''
         可以通过参数：file_name文件名来区分不同数据，对应不同的函数入口
          数据文件过滤excel中不必要的数据
@@ -28,7 +28,7 @@ class ExcelHandler(object):
         :param case_desc: 通过excel中的case_description来过滤用例
         :return:
         '''
-        sheet = self.read_excel()
+        sheet = self.read_excel(sheet_path)
         rows, cols = sheet.nrows, sheet.ncols
         l = []
         title = sheet.row_values(0)
