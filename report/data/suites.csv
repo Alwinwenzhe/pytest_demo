@@ -1,4 +1,10 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Tue Feb 20 16:45:38 CST 2024","Tue Feb 20 16:45:40 CST 2024","2127","test_case.jnt_inter_case.jnt_app","test_jnt_app_001_login","TestJntApp001Login","","","test_001_oauth_token[case0]","
+"passed","Thu Feb 22 13:53:49 CST 2024","Thu Feb 22 13:53:52 CST 2024","2616","test_case.jnt_inter_case.jnt_app","test_jnt_app_001_login","TestJntApp001Login","","","test_001_oauth_token[case1]","
+            用例描述：获取验证码
+        "
+"passed","Thu Feb 22 13:53:15 CST 2024","Thu Feb 22 13:53:18 CST 2024","3140","","","","","","test_001_oauth_token[case1]","
+            用例描述：获取验证码
+        "
+"passed","Thu Feb 22 13:53:47 CST 2024","Thu Feb 22 13:53:49 CST 2024","2302","test_case.jnt_inter_case.jnt_app","test_jnt_app_001_login","TestJntApp001Login","","","test_001_oauth_token[case0]","
             用例描述：获取验证码
         "

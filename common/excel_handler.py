@@ -20,7 +20,7 @@ class ExcelHandler(object):
         table = book.sheet_by_index(0)        # 通过索引顺序获取sheet
         return table
 
-    def get_excel_data(self,sheet_path=Config.API_CASE_PATH):
+    def get_excel_data(self,case_desc,sheet_path=Config.API_CASE_PATH):
         '''
         可以通过参数：file_name文件名来区分不同数据，对应不同的函数入口
          数据文件过滤excel中不必要的数据
@@ -35,8 +35,8 @@ class ExcelHandler(object):
         # 获取其他行
         for i in range(1, rows):
             #print(sheet.row_values(i))
-            # if case_desc in sheet.row_values(i):
-            l.append(dict(zip(title, sheet.row_values(i))))  # 先返回一个zip对象，按最短得title或row_values拼接；然后通过dict格式化为dict，最后增加到list中
+            if case_desc in sheet.row_values(i):                # 这里过滤指定用例，否则所有用例都会放到一个case中执行
+                l.append(dict(zip(title, sheet.row_values(i))))  # 先返回一个zip对象，按最短得title或row_values拼接；然后通过dict格式化为dict，最后增加到list中
         return l
 
     def write_excel_by_xlutils(self,row,value):

@@ -1,1 +1,1 @@
-{"total":1,"items":[{"uid":"3323401af72b22a1c959104dfab272aa","name":"test_case.jnt_inter_case.jnt_app","statistic":{"failed":0,"broken":0,"skipped":0,"passed":1,"unknown":0,"total":1}}]}
+{"total":2,"items":[{"uid":"3323401af72b22a1c959104dfab272aa","name":"test_case.jnt_inter_case.jnt_app","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}}]}

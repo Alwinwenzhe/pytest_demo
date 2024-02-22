@@ -26,7 +26,7 @@ class TestJntApp001Login(object):
     @allure.step('登录授权')
     @pytest.mark.jnt_app
     # @pytest.mark.parametrize()第一个参数为逗号分隔的字符串列表，第二个参数是值列表parametrize()
-    @pytest.mark.parametrize('case', excel.get_excel_data())
+    @pytest.mark.parametrize('case', excel.get_excel_data("001_oauth_token"))
     def test_001_oauth_token(self,case):
         """
             用例描述：获取验证码
