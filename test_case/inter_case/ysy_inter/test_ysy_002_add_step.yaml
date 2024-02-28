@@ -1,0 +1,16 @@
+-
+  name: $csv{name}
+  request:
+    url: https://api.yishengyue.cn/api/v1/member/addMenberStep
+    method: post
+    headers:
+      Content-Type: application/json; charset=UTF-8
+      enterpriseId: 1122c78ae5d140a5acbaa9e75c8b8994
+    params:
+      stepNum: $csv{step}
+      userId: $csv{userid}
+  validate:
+  -   equals: {status_code: 200}
+  -   contains: code":0
+
+
