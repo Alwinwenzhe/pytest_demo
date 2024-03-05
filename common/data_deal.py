@@ -47,6 +47,7 @@ class DataDeal(object):
         preset_data = case['case_preset']
         urls = case['case_url']
         global_var = case['case_global_var']
+        upload_files = case['upload_files']
         url_domain = self.choose_envir(envir)
         api_url = url_domain + urls
         api_url = self.while_data(envir, api_url)           # url不会有多个且复杂的处理，所有可以直接使用while_data
@@ -63,10 +64,7 @@ class DataDeal(object):
         if params:
             params = json.loads(params)         # 将字符串通过特殊的形式转为python的dict类型
             params = self.brackets_dict_data(envir, params)  # params格式有问题
-        # params = json.dumps(params)         # jmb服务器不接受dict形式，再次转化
-        # tmp_pra = str(params).replace("{", "")
-        # tmp_pra = str(tmp_pra).replace("}", "")
-        return  request_mode, expect, api_url, headers, params, global_var          # 只验证第一个expect值即可
+        return  request_mode, expect, api_url, headers, params, global_var,upload_files          # 只验证第一个expect值即可
 
     def single_sql_data_deal(self,envir,data, *args,**kwargs):
         '''
@@ -105,7 +103,13 @@ class DataDeal(object):
         :return:
         '''
         for key, value in data.items():
-            data[key] = self.circular_processing_data(envir, value)
+            if type(value) is dict:
+                new_value = value
+                for k,v in new_value.items():
+                    new_value[k] = self.circular_processing_data(envir, v)
+                data[key] = new_value
+            else:
+                data[key] = self.circular_processing_data(envir, value)
         return data
 
     def format_data(self,envir,data, *args,**kwargs):
@@ -172,7 +176,6 @@ class DataDeal(object):
         '''
         # oper_s = operate_sql_al.OperateSqlAl(envir)
         while 'j::' in data or 'c::' in data or 's::' in data or '@time@' in data:
-            oper_s = operate_sql_al.OperateSqlAl(envir)
             if 'j::' in data:
                 symbol_data = data.split('j::')     # 这里有可能是body中的某个值传入，如：'j::verifyCode'
                 con_data = str(self.oper_j.get_json_value(symbol_data[1]))
@@ -189,6 +192,7 @@ class DataDeal(object):
                 data = symbol_data[0] + self.dl.get_str_time() +symbol_data[1]
                 return data
             elif 's::' in data:
+                oper_s = operate_sql_al.OperateSqlAl(envir)
                 symbol_data = data.split('s::')
                 con_data = oper_s.sql_main(symbol_data[1])     #這裡不能調用con_var方法
                 data = con_data
@@ -212,17 +216,21 @@ class DataDeal(object):
             list_last = list[-1]
             res_value = json.loads(res)  # 序列化字符串或json对象成为python对象
             try:
-                for i in range(len(list)):
-                    if str(list[i]).isdigit():  # 如果是数字
-                        res_value = res_value[int(list[i])]
-                    elif list[i] == "":
-                        pass
-                    else:
-                        if list[i] in res_value:
-                            res_value = res_value[list[i]]
+                for i in list[1::]:
+                    if i.isdigit():  # 如果是数字
+                        res_value = res_value[int(i)]
+                    elif ":" in i:
+                        list2 = i.split(":")
+                        if list2[0] in res_value:
+                            res_value = res_value[list2[0]]
+                    elif i in res_value:
+                        res_value = res_value[i]
+                if ":" in list_last:
+                    self.oper_j.write_json_value(list2[1], res_value)
+                else:
+                    self.oper_j.write_json_value(list_last, res_value)
             except Exception as e:
                 self.log.error('error log：get param fail')
-            self.oper_j.write_json_value(list_last, res_value)
 
     def test_case_method(self,case, *args,**kwargs):
         '''
@@ -231,8 +239,8 @@ class DataDeal(object):
         :param request_method:
         :return:
         '''
-        request_method, expect, api_url, headers, params, global_var = self.param_get_deal(case)
-        response = self.reqe.req(request_method, api_url, params, headers)
+        request_method, expect, api_url, headers, params, global_var,upload_files= self.param_get_deal(case)
+        response = self.reqe.req(request_method, api_url, params, headers,upload_files)
         if response['body']:
             self.test.assert_common(response['code'], response['body'], expect, response['time_consuming'])
         else:                       #处理PHP返回的页面请求

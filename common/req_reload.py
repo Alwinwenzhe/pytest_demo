@@ -27,7 +27,7 @@ class ReqReload(object):
     #     # self.get_session = self.session.get_session(env)
     #     self.get_session = self.session.get_session('debug')
 
-    def req(self,api_method,api_url, params, headers):
+    def req(self,api_method,api_url, params, headers,upload_files):
         '''
         封装请求方法
         :param api_method:
@@ -38,12 +38,14 @@ class ReqReload(object):
         '''
         # s = requests.sessions
         # s.keep_alive = False  # 关闭多余连接
-        if 'get' == api_method:
+        if 'get' == api_method.lower():
             res = self.get_request(api_url, params, headers)
-        elif 'post' == api_method:
-            res = self.post_request(api_url, params, headers)
-        elif 'put' == api_method:
-            res = self.get_request(api_url, params,headers)
+        elif 'post' == api_method.lower():
+            res = self.post_request(api_url, params, headers,upload_files)
+        elif 'put' == api_method.lower():
+            res = self.put_request(api_url, params,headers)
+        else:
+            res = self.post_request()
         return res
 
     def get_request(self, url, data, header):
@@ -53,28 +55,15 @@ class ReqReload(object):
         :param data:
         :param header:
         :return:
-
         """
-        # 无需判定url开头
-        # if not url.startswith('http://'):
-        #     url = '%s%s' % ('http://', url)
-        #     print(url)
 
-        # 这里登录暂时未使用cookies，所有源代码暂时注释掉
-        # try:
-        #     if data is None:
-        #         response = requests.get(url=url, headers=header, cookies=self.get_session)
-        #     else:
-        #         response = requests.get(url=url, params=data, headers=header, cookies=self.get_session)
         try:
             response = requests.get(url, params=data, headers=header,verify=False)
         except requests.RequestException as e:
-            print(' \033[31m RequestException url: %s \033[0m ', url)
             print(e)
             return ()
         # 這裏需要兩個異常嗎？
         except Exception as e:
-            print('%s%s' % ('Exception url: ', url))
             print(e)
             return ()
 
@@ -93,7 +82,7 @@ class ReqReload(object):
         response_dicts['time_total'] = time_total
         return response_dicts
 
-    def post_request(self, url, data, header):
+    def post_request(self, url, data, header,upload_files):
         """
         Post请求
         :param url:
@@ -102,21 +91,12 @@ class ReqReload(object):
         :return:
 
         """
-        # # 配置裡就寫死了，不需要
-        # if not url.startswith('https://'):
-        #     url = '%s%s' % ('https://', url)
-        #     print(url)
-
         try:
-            response = requests.post(url=url, data=json.dumps(data), headers=header,verify=False)
-                # response = requests.post(url=url, data=data, headers=header)
-        # try:
-        #     if data is '':
-        #         response = requests.post(url=url, headers=header, cookies=self.get_session)
-        #     else:
-        #         response = requests.post(url=url, params=data, headers=header, cookies=self.get_session)
+            if upload_files:
+                response = requests.post(url=url, files=eval(upload_files), headers=header, verify=False)
+            else:
+                response = requests.post(url=url, data=json.dumps(data), headers=header, verify=False)
         except requests.RequestException as e:
-            print(' \033[31m RequestException url: %s \033[0m', url)  #设置了字符串显示样式和显示后的样式
             print(e)
             return None
         # time_consuming为响应时间，单位为毫秒
@@ -147,9 +127,6 @@ class ReqReload(object):
         :param type:
         :return:
         """
-        if not url.startswith('http://'):
-            url = '%s%s' % ('http://', url)
-            print(url)
         try:
             if data is None:
                 response = requests.post(url=url, headers=header, cookies=self.get_session,verify=False)
@@ -162,7 +139,6 @@ class ReqReload(object):
                 header['Content-Type'] = enc.content_type
                 response = requests.post(url=url, params=data, headers=header, cookies=self.get_session)
         except requests.RequestException as e:
-            print(' \033[31m RequestException url: %s \033[0m ', url)
             print(e)
             return ()
         except Exception as e:
@@ -198,25 +174,13 @@ class ReqReload(object):
         :param data:
         :param header:
         :return:
-
         """
-        if not url.startswith('http://'):
-            url = '%s%s' % ('http://', url)
-            print(url)
-
         try:
             if data is None:
-                response = requests.put(url=url, headers=header, cookies=self.get_session,verify=False)
+                response = requests.put(url=url, headers=header, verify=False)
             else:
-                response = requests.put(url=url, params=data, headers=header, cookies=self.get_session,verify=False)
-
-        except requests.RequestException as e:
-            print(' \033[31m RequestException url: %s \033[0m ', url)
-            print(e)
-            return ()
-
+                response = requests.put(url=url, json=data, headers=header, verify=False)
         except Exception as e:
-            print('%s%s' % ('Exception url: ', url))
             print(e)
             return ()
         time_consuming = response.elapsed.microseconds/1000

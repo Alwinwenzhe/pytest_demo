@@ -1,1 +1,1 @@
-{"total":2,"items":[{"uid":"5bc21cc8eb909eec9ff1f7af324e5e91","name":"建能通APP_正式环境","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}},{"uid":"60ec913c6b04409390f5fbc2e6621114","name":"建能通APP_测试环境","statistic":{"failed":0,"broken":0,"skipped":0,"passed":2,"unknown":0,"total":2}}]}
+{"total":5,"items":[{"uid":"938c2d6be9ecc5c4299d93fc319abae5","name":"调试demo","statistic":{"failed":2,"broken":3,"skipped":1,"passed":67,"unknown":0,"total":73}}]}
