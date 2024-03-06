@@ -1,1 +1,0 @@
-ERROR    root:my_log.py:88 [ERROR 2024-03-05 17:26:56]error log：get param fail

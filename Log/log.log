@@ -325,3 +325,6 @@
 [ERROR 2024-03-05 17:22:04]Response body Does not contain expected_msg, expected_msg is 测试请假_AT_AT-自动化_2024-03-05
 [ERROR 2024-03-05 17:26:37]error log：get param fail
 [ERROR 2024-03-05 17:26:56]error log：get param fail
+[ERROR 2024-03-06 09:44:58]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-06 09:49:04]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-06 09:49:17]statusCode error, expected_code is 200, statusCode is 401 
