@@ -2,20 +2,20 @@ import requests
 import json
 
 # 设置请求头部
-header = {'Authorization': 'Bearer 2bcbde6f3d05480988abae32ae111833'}
+header = {'Content-Type': 'multipart/form-data; boundary=------Fg6Ij0',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJ0ZXN0MjEiLCJzY29wZSI6WyJhbGwiXSwiY2xpZW50IjoiQVBQIiwiZXhwIjoxNzEyNzQzMDE2LCJhdXRob3JpdGllcyI6WyJTWVNfVVNFUiJdLCJqdGkiOiJQcUFyYlV5QjFJY3NLMjFrdnRrRE9pSkhvQ28iLCJjbGllbnRfaWQiOiJQTVMiLCJzdGF0dXMiOjIwMH0.Tl0Rn0hMF1K9z12DellA3L0waop1yYoybXecoU8JCVA'}
 
 # 设置文件路径和文件类型
 file_path = r'../../data/suidao1.jpeg'
-file_type = 'image/jpeg'
 
 # 确保文件存在
 try:
     # with open(file_path, 'rb') as file:
     # 创建文件元组，包括文件名、文件对象和内容类型
-    upload_files = {'file': open(r'../../data/suidao1.jpeg', 'rb')}
+    upload_files = {'file': open(r'../../data/1710227035083_suidao2.jpg', 'rb')}
 
     # 设置URL
-    url = 'https://v1.2.tunnelprj.com/oa/admin-api/system/file/procedure/upload'
+    url = 'https://v1.2.tunnelprj.com/api/app/pre/job/training/file'
 
     # 发送POST请求，上传文件
     response = requests.post(url=url, files=upload_files, headers=header, verify=False)

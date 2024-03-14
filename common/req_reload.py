@@ -16,8 +16,8 @@ from common import consts
 
 
 class ReqReload(object):
-
     requests.packages.urllib3.disable_warnings()
+
     # def __init__(self, env):  和下方的self.get_session = self.session.get_session(env)配套使用
     # def __init__(self):
     #     """
@@ -27,7 +27,7 @@ class ReqReload(object):
     #     # self.get_session = self.session.get_session(env)
     #     self.get_session = self.session.get_session('debug')
 
-    def req(self,api_method,api_url, params, headers,upload_files):
+    def req(self, api_method, api_url, params, headers, upload_files):
         '''
         封装请求方法
         :param api_method:
@@ -41,9 +41,11 @@ class ReqReload(object):
         if 'get' == api_method.lower():
             res = self.get_request(api_url, params, headers)
         elif 'post' == api_method.lower():
-            res = self.post_request(api_url, params, headers,upload_files)
+            res = self.post_request(api_url, params, headers, upload_files)
         elif 'put' == api_method.lower():
-            res = self.put_request(api_url, params,headers)
+            res = self.put_request(api_url, params, headers)
+        elif 'delete' == api_method.lower():
+            res = self.delete_request(api_url, headers)
         else:
             res = self.post_request()
         return res
@@ -58,7 +60,7 @@ class ReqReload(object):
         """
 
         try:
-            response = requests.get(url, params=data, headers=header,verify=False)
+            response = requests.get(url, params=data, headers=header, verify=False)
         except requests.RequestException as e:
             print(e)
             return ()
@@ -67,7 +69,7 @@ class ReqReload(object):
             print(e)
             return ()
 
-        time_consuming = response.elapsed.microseconds/1000
+        time_consuming = response.elapsed.microseconds / 1000
         time_total = response.elapsed.total_seconds()
         consts.STRESS_LIST.append(time_consuming)
         response_dicts = dict()
@@ -82,7 +84,7 @@ class ReqReload(object):
         response_dicts['time_total'] = time_total
         return response_dicts
 
-    def post_request(self, url, data, header,upload_files):
+    def post_request(self, url, data, header, upload_files):
         """
         Post请求
         :param url:
@@ -100,7 +102,7 @@ class ReqReload(object):
             print(e)
             return None
         # time_consuming为响应时间，单位为毫秒
-        time_consuming = response.elapsed.microseconds/1000
+        time_consuming = response.elapsed.microseconds / 1000
         # time_total为响应时间，单位为秒
         time_total = response.elapsed.total_seconds()
         consts.STRESS_LIST.append(time_consuming)
@@ -129,7 +131,7 @@ class ReqReload(object):
         """
         try:
             if data is None:
-                response = requests.post(url=url, headers=header, cookies=self.get_session,verify=False)
+                response = requests.post(url=url, headers=header, cookies=self.get_session, verify=False)
             else:
                 data[file_parm] = os.path.basename(file), open(file, 'rb'), f_type
                 enc = MultipartEncoder(
@@ -147,7 +149,7 @@ class ReqReload(object):
             return ()
 
         # time_consuming为响应时间，单位为毫秒
-        time_consuming = response.elapsed.microseconds/1000
+        time_consuming = response.elapsed.microseconds / 1000
         # time_total为响应时间，单位为秒
         time_total = response.elapsed.total_seconds()
 
@@ -183,7 +185,35 @@ class ReqReload(object):
         except Exception as e:
             print(e)
             return ()
-        time_consuming = response.elapsed.microseconds/1000
+        time_consuming = response.elapsed.microseconds / 1000
+        time_total = response.elapsed.total_seconds()
+        consts.STRESS_LIST.append(time_consuming)
+        response_dicts = dict()
+        response_dicts['code'] = response.status_code
+        try:
+            response_dicts['body'] = response.json()
+        except Exception as e:
+            print(e)
+            response_dicts['body'] = ''
+        response_dicts['text'] = response.text
+        response_dicts['time_consuming'] = time_consuming
+        response_dicts['time_total'] = time_total
+        return response_dicts
+
+    def delete_request(self, url, header):
+        """
+        Delete请求
+        :param url:
+        :param data:
+        :param header:
+        :return:
+        """
+        try:
+            response = requests.delete(url=url, headers=header, verify=False)
+        except Exception as e:
+            print(e)
+            return ()
+        time_consuming = response.elapsed.microseconds / 1000
         time_total = response.elapsed.total_seconds()
         consts.STRESS_LIST.append(time_consuming)
         response_dicts = dict()

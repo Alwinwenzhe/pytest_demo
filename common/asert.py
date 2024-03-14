@@ -10,7 +10,7 @@
 """
 from common import my_log
 from common import consts
-import json,requests, pytest
+import json, requests, pytest
 
 
 class Asert(object):
@@ -29,7 +29,7 @@ class Asert(object):
             assert int(code) == int(expected_code)
             return True
         except Exception as e:
-            print("\033[32;1m出现错误如下\033[0m")
+            # print("\033[32;1m出现错误如下\033[0m")
             self.log.error("statusCode error, expected_code is %s, statusCode is %s " % (expected_code, code))
             consts.RESULT_LIST.append('fail')
             raise
@@ -48,8 +48,9 @@ class Asert(object):
             return True
 
         except Exception as e:
-            print("\033[32;1m出现错误如下\033[0m")
-            self.log.error("Response body msg != expected_msg, expected_msg is %s, body_msg is %s" % (expected_msg, body_msg))
+            # print("\033[32;1m出现错误如下\033[0m")
+            self.log.error(
+                "Response body msg != expected_msg, expected_msg is %s, body_msg is %s" % (expected_msg, body_msg))
             consts.RESULT_LIST.append('fail')
 
             raise
@@ -62,11 +63,11 @@ class Asert(object):
         :return:
         """
         try:
-            text = json.dumps(body, ensure_ascii=False)         # 将body序列化为JSON格式的str
+            text = json.dumps(body, ensure_ascii=False)  # 将body序列化为JSON格式的str
             assert expected_msg in text
             return True
         except Exception as e:
-            print("\033[32;1m出现错误如下\033[0m")
+            # print("\033[32;1m出现错误如下\033[0m")
             self.log.error("Response body Does not contain expected_msg, expected_msg is %s" % expected_msg)
             consts.RESULT_LIST.append('fail')
             raise
@@ -82,7 +83,7 @@ class Asert(object):
             assert body == expected_msg
             return True
         except Exception as e:
-            print("\033[32;1m出现错误如下\033[0m")
+            # print("\033[32;1m出现错误如下\033[0m")
             self.log.error("Response body != expected_msg, expected_msg is %s, body is %s" % (expected_msg, body))
             consts.RESULT_LIST.append('fail')
             raise
@@ -98,13 +99,12 @@ class Asert(object):
             assert time < expected_time
             return True
         except Exception as e:
-            print("\033[32;1m出现错误如下\033[0m")
+            # print("\033[32;1m出现错误如下\033[0m")
             self.log.error("Response time > expected_time, expected_time is %s, time is %s" % (expected_time, time))
             consts.RESULT_LIST.append('fail')
             raise
 
-
-    def assert_easy(self,res_code,res_time):
+    def assert_easy(self, res_code, res_time):
         '''
         仅判断响应状态及响应时间:适用于php
         :return:
@@ -128,7 +128,7 @@ class Asert(object):
     #
     # @assert_easy(res_code,res_time)
 
-    def assert_common(self,res_code,res_body,res_expect,res_time):
+    def assert_common(self, res_code, res_body, res_expect, res_time):
         '''
         通用常用三个维度验证
         :param res_code: 接口响应代码
@@ -141,16 +141,13 @@ class Asert(object):
         assert self.assert_in_text(res_body, res_expect)
         assert self.assert_time(res_time, 1500)
 
-    def assert_yaml(self,assert_info,res,mylog):
+    def assert_yaml(self, assert_info, res, mylog):
         '''验证yaml中的包含与相等'''
         if 'contains' in assert_info.keys():
             # assert assert_info['contains'] in res
-            pytest.assume(assert_info['contains'] in res,f'期望验证信息是：{assert_info},实际信息是：{res}')
+            pytest.assume(assert_info['contains'] in res, f'期望验证信息是：{assert_info},实际信息是：{res}')
         elif 'equals' in assert_info.keys():
             # assert assert_info['equals'] == res
-            pytest.assume(assert_info['equals'] == res,f'期望验证信息是：{assert_info},实际信息是：{res}')
+            pytest.assume(assert_info['equals'] == res, f'期望验证信息是：{assert_info},实际信息是：{res}')
         # 这里需要判断ture false 对应不同得日志级别，不仅是info
         mylog.info('用例执行完毕')
-
-
-

@@ -30,7 +30,8 @@ class DealTime(object):
         '''
         self.oper_j.write_json_value(oa_start_stamp=self.get_current_timestamp(), cur_date=self.get_cur_date(),
                                      oa_end_stamp=self.get_current_timestamp() + 3600,
-                                     reimburse_Date=self.get_current_timestamp())
+                                     reimburse_Date=self.get_current_timestamp(),
+                                     cur_time_stf=self.get_current_timestamp())
 
     def get_cur_date(self, *args, **kwargs):
         '''获取当前得日期'''

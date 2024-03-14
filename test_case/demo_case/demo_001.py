@@ -1,8 +1,4 @@
 import requests
 import json
 
-data = 'data'
-if ":" in data:
-    print('y')
-else:
-    print('n')
+print("\033[32;1m出现错误如下\033[0m")

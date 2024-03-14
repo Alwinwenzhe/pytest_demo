@@ -96,3 +96,63 @@
 [ERROR 2024-03-06 09:44:58]Response body Does not contain expected_msg, expected_msg is 操作成功
 [ERROR 2024-03-06 09:49:04]Response body Does not contain expected_msg, expected_msg is 操作成功
 [ERROR 2024-03-06 09:49:17]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-06 17:05:39]error log：get param fail
+[ERROR 2024-03-06 17:05:58]error log：get param fail
+[ERROR 2024-03-06 17:06:00]error log：get param fail
+[ERROR 2024-03-06 17:06:02]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-06 17:11:02]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-06 17:35:56]error log：get param fail
+[ERROR 2024-03-06 17:36:15]error log：get param fail
+[ERROR 2024-03-06 18:27:04]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-06 18:36:05]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-06 18:36:33]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-07 14:30:56]Response body Does not contain expected_msg, expected_msg is 操作失败
+[ERROR 2024-03-11 14:15:19]Response body Does not contain expected_msg, expected_msg is 该账号只是
+[ERROR 2024-03-11 15:06:53]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-11 15:09:09]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-11 15:10:10]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-11 17:19:08]Response body Does not contain expected_msg, expected_msg is 正确
+[ERROR 2024-03-11 17:37:21]Response body Does not contain expected_msg, expected_msg is 正确
+[ERROR 2024-03-11 17:38:13]Response body Does not contain expected_msg, expected_msg is 正确
+[ERROR 2024-03-12 18:13:05]error log：get param fail
+[ERROR 2024-03-12 18:13:24]error log：get param fail
+[ERROR 2024-03-12 18:22:30]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:22:30]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:22:32]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:23:10]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:23:13]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:23:20]Response body Does not contain expected_msg, expected_msg is 测试专用流程cw
+[ERROR 2024-03-12 18:23:40]error log：get param fail
+[ERROR 2024-03-12 18:23:59]error log：get param fail
+[ERROR 2024-03-12 18:27:30]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:27:33]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-12 18:27:40]Response body Does not contain expected_msg, expected_msg is 测试专用流程cw
+[ERROR 2024-03-12 18:28:01]error log：get param fail
+[ERROR 2024-03-12 18:28:20]error log：get param fail
+[ERROR 2024-03-13 11:06:45]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:06:47]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:06:55]Response body Does not contain expected_msg, expected_msg is 测试专用流程cw
+[ERROR 2024-03-13 11:07:15]error log：get param fail
+[ERROR 2024-03-13 11:07:34]error log：get param fail
+[ERROR 2024-03-13 11:10:09]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:10:10]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:10:12]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:17:47]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:17:48]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:17:50]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:24:19]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:24:20]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:25:11]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-13 11:25:11]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 09:47:20]error log：get param fail
+[ERROR 2024-03-14 09:47:39]error log：get param fail
+[ERROR 2024-03-14 10:39:13]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:39:14]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:39:50]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:39:51]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:40:07]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:40:07]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:41:43]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:41:44]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:44:01]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 10:44:02]Response body Does not contain expected_msg, expected_msg is 操作成功

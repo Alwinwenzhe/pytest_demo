@@ -109,7 +109,7 @@ class DataDeal(object):
                     if isinstance(v, (dict, list)) and "::" in str(v):
                         # 如果值是字典或列表，递归处理
                         data[key][k] = self.brackets_dict_data(envir, v)
-                    elif "::" in v:
+                    elif "::" in str(v):
                         # 如果值是普通类型，调用处理函数
                         data[key][k] = self.circular_processing_data(envir, v)
             elif isinstance(value, list) and "::" in str(value):

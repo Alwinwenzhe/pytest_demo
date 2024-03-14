@@ -3,6 +3,7 @@
 from configparser import ConfigParser
 from common import my_log
 import os, re
+
 # 工程中配置中有相对路径即可替代
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 脚本路径
@@ -11,9 +12,10 @@ API_CASE_PATH = BASE_PATH + r'\data\jnt_inter_case.xls'
 QIUYI_CASE_PATH = BASE_PATH + r'\data\web_test_qiuyi.xlsx'
 HC_CASE_PATH = BASE_PATH + r'\data\华测用例.xlsx'
 
+
 class Config:
     # titles:
-    TITLE_DEBUG = "private_debug"       # 定义类变量
+    TITLE_DEBUG = "private_debug"  # 定义类变量
     TITLE_RELEASE = "online_release"
     TITLE_EMAIL = "mail"
 
@@ -75,6 +77,7 @@ class Config:
     JNT_OA_TEST = "jnt_oa_test_host"
     # 建能通APP正式环境
     JNT_APP_DEV = 'jnt_app_dev_host'
+    AND_DEV = 'and_dev_host'
 
     # path
     path_dir = str(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
@@ -87,8 +90,8 @@ class Config:
         self.log = my_log.MyLog()
         self.conf_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.ini')
         # print(self.conf_path)
-        self.xml_report_path = Config.path_dir+'/tmp'
-        self.html_report_path = Config.path_dir+'/report'
+        self.xml_report_path = Config.path_dir + '/tmp'
+        self.html_report_path = Config.path_dir + '/report'
         if not os.path.exists(self.conf_path):
             raise FileNotFoundError("请确保配置文件存在！")
         self.config.read(self.conf_path, encoding='utf-8')
@@ -98,12 +101,12 @@ class Config:
         self.tysy_environment = self.get_conf(Config.YSY_ENVIRONMENT)
         self.ysy_test = self.get_conf(Config.YSY_HOST)
         # 一生约正式环境信息
-        self.ysy_user = self.get_conf(Config.YSY_USER,'R')
-        self.ysy_host = self.get_conf(Config.YSY_HOST,'R')
-        self.ysy_userId = self.get_conf(Config.YSY_USERID,'R')
-        self.ysy_accesstoken = self.get_conf(Config.YSY_ACCESSTOKEN,'R')
-        self.ysy_environment = self.get_conf(Config.YSY_ENVIRONMENT,'R')
-        self.ysy_release = self.get_conf(Config.YSY_HOST,'R')
+        self.ysy_user = self.get_conf(Config.YSY_USER, 'R')
+        self.ysy_host = self.get_conf(Config.YSY_HOST, 'R')
+        self.ysy_userId = self.get_conf(Config.YSY_USERID, 'R')
+        self.ysy_accesstoken = self.get_conf(Config.YSY_ACCESSTOKEN, 'R')
+        self.ysy_environment = self.get_conf(Config.YSY_ENVIRONMENT, 'R')
+        self.ysy_release = self.get_conf(Config.YSY_HOST, 'R')
         # 一生约测试环境数据库
         self.tysy_db_host = self.get_conf(Config.YSY_DB_HOST)
         self.tysy_db_port = self.get_conf(Config.YSY_DB_PORT)
@@ -111,32 +114,32 @@ class Config:
         self.tysy_db_user = self.get_conf(Config.YSY_DB_USER)
         self.tysy_db_pwd = self.get_conf(Config.YSY_DB_PWD)
         # 一生约正式环境数据库
-        self.ysy_db_host = self.get_conf(Config.YSY_DB_HOST,'R')
-        self.ysy_db_port = self.get_conf(Config.YSY_DB_PORT,'R')
-        self.ysy_db_name = self.get_conf(Config.YSY_DB_NAME,'R')
-        self.ysy_db_user = self.get_conf(Config.YSY_DB_USER,'R')
-        self.ysy_db_pwd = self.get_conf(Config.YSY_DB_PWD,'R')
+        self.ysy_db_host = self.get_conf(Config.YSY_DB_HOST, 'R')
+        self.ysy_db_port = self.get_conf(Config.YSY_DB_PORT, 'R')
+        self.ysy_db_name = self.get_conf(Config.YSY_DB_NAME, 'R')
+        self.ysy_db_user = self.get_conf(Config.YSY_DB_USER, 'R')
+        self.ysy_db_pwd = self.get_conf(Config.YSY_DB_PWD, 'R')
         # 雨花斋测试库信息，user和pwd和一生约测试一致
-        self.tyhz_user = self.get_conf( Config.YHZ_TEST_USER)
+        self.tyhz_user = self.get_conf(Config.YHZ_TEST_USER)
         self.tyhz_db_user = self.get_conf(Config.YHZ_DB_USER)
         self.tyhz_db_pwd = self.get_conf(Config.YHZ_DB_PWD)
-        self.yhz_test = self.get_conf( Config.YHZ_HOST)
+        self.yhz_test = self.get_conf(Config.YHZ_HOST)
         self.tyhz_db_name = self.get_conf(Config.YHZ_DB_NAME)
         # 雨花斋正式库信息
-        self.yhz_user = self.get_conf(Config.YHZ_USER,'R')
-        self.yhz_release = self.get_conf(Config.YHZ_HOST,'R')
-        self.yhz_db_name = self.get_conf(Config.YHZ_DB_NAME,'R')
+        self.yhz_user = self.get_conf(Config.YHZ_USER, 'R')
+        self.yhz_release = self.get_conf(Config.YHZ_HOST, 'R')
+        self.yhz_db_name = self.get_conf(Config.YHZ_DB_NAME, 'R')
         # 一生约测试环境物业app
-        self.tysy_pro_host = self.get_conf( Config.YSY_PRO_HOST)
+        self.tysy_pro_host = self.get_conf(Config.YSY_PRO_HOST)
         # 一生约正式环境物业app
-        self.ysy_pro_user = self.get_conf(Config.YSY_PRO_USER,'R')
-        self.ysy_pro_release = self.get_conf(Config.YSY_PRO_HOST,'R')
+        self.ysy_pro_user = self.get_conf(Config.YSY_PRO_USER, 'R')
+        self.ysy_pro_release = self.get_conf(Config.YSY_PRO_HOST, 'R')
         # 小猪测试数据库
         self.ysyo2o_host = self.get_conf(Config.O2O_HOST)
         self.tdb_name_o2o = self.get_conf(Config.O2O_DB_NAME)
         # 小猪正式数据库
-        self.ysy_o2o = self.get_conf(Config.O2O_HOST,'R')
-        self.db_name_o2o = self.get_conf(Config.O2O_DB_NAME,'R')
+        self.ysy_o2o = self.get_conf(Config.O2O_HOST, 'R')
+        self.db_name_o2o = self.get_conf(Config.O2O_DB_NAME, 'R')
         # 姐妹邦测试环境
         self.jmb_test = self.get_conf(Config.JMB_T_HOST)
         self.jmb_t_user = self.get_conf(Config.JMB_T_USER)
@@ -150,10 +153,10 @@ class Config:
         self.jnt_app_test = self.get_conf(Config.JNT_APP_TEST)
         self.jnt_oa_test = self.get_conf(Config.JNT_OA_TEST)
         # 建能通正式环境
-        self.jnt_app_dev = self.get_conf(Config.JNT_APP_DEV,'R')
+        self.jnt_app_dev = self.get_conf(Config.JNT_APP_DEV, 'R')
+        self.and_dev = self.get_conf(Config.AND_DEV, 'R')
 
-
-    def get_conf(self,value, title= 'T'):
+    def get_conf(self, value, title='T'):
         """
         配置文件读取
         :param title:
@@ -161,7 +164,7 @@ class Config:
         :return:
         """
         if title == 'T':
-            title = Config.TITLE_DEBUG          # 调用类变量
+            title = Config.TITLE_DEBUG  # 调用类变量
         else:
             title = Config.TITLE_RELEASE
         return self.config.get(title, value)
@@ -187,6 +190,7 @@ class Config:
         self.config.add_section(title)
         with open(self.conf_path, "w+") as f:
             return self.config.write(f)
+
 
 if __name__ == "__main__":
     con = Config()
