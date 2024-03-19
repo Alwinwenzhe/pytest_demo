@@ -63,6 +63,14 @@ class TestDebug(object):
         self.d_time.write_time_to_json()
         self.new.test_case_method(case)
 
+    @allure.story('首页模块')
+    @pytest.mark.debug
+    # @pytest.mark.parametrize()第一个参数为逗号分隔的字符串列表，第二个参数是值列表parametrize()
+    @pytest.mark.parametrize('case', excel.get_excel_data("debug", 'app_home'))
+    def test_07_app_home(self, case):
+        self.d_time.write_time_to_json()
+        self.new.test_case_method(case)
+
 
 if __name__ == "__main__":
     a = str(list(range(10)))

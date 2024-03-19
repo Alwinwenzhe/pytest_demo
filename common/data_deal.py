@@ -190,6 +190,7 @@ class DataDeal(object):
         :param data:
         :return:
         '''
+
         if '&' in data:
             data = data.split("&")
             result = []
@@ -211,11 +212,7 @@ class DataDeal(object):
         # oper_s = operate_sql_al.OperateSqlAl(envir)
         while 'j::' in data or 'c::' in data or 's::' in data or '@time@' in data:
             if 'j::' in data:
-                symbol_data = data.split('j::')  # 这里有可能是body中的某个值传入，如：'j::verifyCode'
-                con_data = str(self.oper_j.get_json_value(symbol_data[1]))
-                data = symbol_data[0] + con_data  # 拼接前需做type统一
-                # data = self.is_num_by_except(data)         # 纯数字判断，不能加，加了登录接口的验证码和手机号被当作纯数字，出问题
-                return data
+                return self.process_url(data)
             elif 'c::' in data:
                 symbol_data = data.split('c::')
                 con_data = self.choose_envir(symbol_data[1])
@@ -236,6 +233,22 @@ class DataDeal(object):
                 break
         else:
             return data
+
+    def process_url(self, url):
+        symbol_data = url.split('j::')
+        data = symbol_data[0]
+
+        for i in range(1, len(symbol_data)):
+            key_value_pairs = symbol_data[i].split('&')
+
+            key = key_value_pairs[0].split('=')[-1]  # 获取标识符后的键名
+            value = self.oper_j.get_json_value(key)  # 获取对应键的值
+            data += str(value)
+
+            if len(key_value_pairs) > 1:
+                data += '&' + '&'.join(key_value_pairs[1:])  # 保留剩余的参数部分
+
+        return data
 
     def response_write_to_json(self, key, res, *args, **kwargs):
         '''

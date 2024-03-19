@@ -156,3 +156,27 @@
 [ERROR 2024-03-14 10:41:44]Response body Does not contain expected_msg, expected_msg is 操作成功
 [ERROR 2024-03-14 10:44:01]Response body Does not contain expected_msg, expected_msg is 操作成功
 [ERROR 2024-03-14 10:44:02]Response body Does not contain expected_msg, expected_msg is 操作成功
+[ERROR 2024-03-14 11:33:44]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-14 11:37:49]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-14 17:23:34]Response body Does not contain expected_msg, expected_msg is 正确
+[ERROR 2024-03-18 14:57:33]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-18 14:57:48]Response body Does not contain expected_msg, expected_msg is 接口自动化
+[ERROR 2024-03-18 17:28:29]Response body Does not contain expected_msg, expected_msg is 陈波专用测试隧道
+[ERROR 2024-03-18 17:28:29]Response body Does not contain expected_msg, expected_msg is 陈波专用测试隧道-分段2
+[ERROR 2024-03-18 17:28:30]Response body Does not contain expected_msg, expected_msg is 开挖
+[ERROR 2024-03-18 17:44:33]Response body Does not contain expected_msg, expected_msg is 陈波专用测试隧道
+[ERROR 2024-03-18 17:44:34]Response body Does not contain expected_msg, expected_msg is 陈波专用测试隧道-分段2
+[ERROR 2024-03-18 17:44:34]Response body Does not contain expected_msg, expected_msg is 开挖
+[ERROR 2024-03-18 19:24:51]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-18 19:28:46]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-19 15:06:45]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-19 15:06:59]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-19 15:07:49]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-19 15:47:14]error log：get param fail
+[ERROR 2024-03-19 15:47:34]error log：get param fail
+[ERROR 2024-03-19 15:49:09]statusCode error, expected_code is 200, statusCode is 401 
+[ERROR 2024-03-19 15:49:21]Response body Does not contain expected_msg, expected_msg is 下道-平均效率
+[ERROR 2024-03-19 15:49:21]Response body Does not contain expected_msg, expected_msg is 下道近期进尺走势
+[ERROR 2024-03-19 15:49:22]Response body Does not contain expected_msg, expected_msg is 正确
+[ERROR 2024-03-19 15:49:22]Response body Does not contain expected_msg, expected_msg is 正确
+[ERROR 2024-03-19 16:32:42]Response body Does not contain expected_msg, expected_msg is 下道-平均效率

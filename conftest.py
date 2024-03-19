@@ -8,12 +8,19 @@ def init_connect():
     print('会话之前初始化连接--pass')
     yield time.time()  # 将time.time()作为参数传递给调用参数，作为一个形式参数，传入函数内部
     print('会话之后关闭连接--pass')
-    pytest_sessionfinish()
 
 
-def pytest_addoption(parser):
-    parser.addoption("--environment", action="store", default="debug",
-                     help="当前三个环境 : debug or dev or test")
+def pytest_configure(config):
+    # 注册自定义标记 debug
+    config.addinivalue_line(
+        "markers",
+        "debug: 标记测试用例为调试用途，只有在显式请求时才运行这些测试"
+    )
+
+
+# def pytest_addoption(parser):
+#     parser.addoption("--environment", action="store", default="debug",
+#                      help="当前三个环境 : debug or dev or test")
 
 
 # @pytest.fixture(scope="session")
@@ -33,13 +40,12 @@ def delete_json_files(directory):
     for i in files:
         try:
             os.remove(i)
-            print(f"Deleted JSON file: {i}")
+            print(f"Deleted file: {i}")
         except OSError as e:
             print(f"Error: {e.strerror} : {i}")
 
 
 def pytest_sessionfinish(session, exitstatus):
-    """pytest会话结束时调用的钩子函数"""
-    # 假设你的JSON文件都存放在'results'目录下
+    """pytest会话结束时自动调用钩子函数"""
     results_dir = './tmp'  # 根据实际情况修改这个路径
     delete_json_files(results_dir)
