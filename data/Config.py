@@ -79,6 +79,13 @@ class Config:
     JNT_APP_DEV = 'jnt_app_dev_host'
     AND_DEV = 'and_dev_host'
 
+    # 安能达OA数据库
+    OA_DB_HOST = 'oa_db_host'
+    OA_DB_PORT = "oa_db_port"
+    OA_DB_NAME = "oa_db_name"
+    OA_DB_USER = "oa_db_user"
+    OA_DB_PWD = "oa_db_pwd"
+
     # path
     path_dir = str(os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir)))
 
@@ -119,42 +126,18 @@ class Config:
         self.ysy_db_name = self.get_conf(Config.YSY_DB_NAME, 'R')
         self.ysy_db_user = self.get_conf(Config.YSY_DB_USER, 'R')
         self.ysy_db_pwd = self.get_conf(Config.YSY_DB_PWD, 'R')
-        # 雨花斋测试库信息，user和pwd和一生约测试一致
-        self.tyhz_user = self.get_conf(Config.YHZ_TEST_USER)
-        self.tyhz_db_user = self.get_conf(Config.YHZ_DB_USER)
-        self.tyhz_db_pwd = self.get_conf(Config.YHZ_DB_PWD)
-        self.yhz_test = self.get_conf(Config.YHZ_HOST)
-        self.tyhz_db_name = self.get_conf(Config.YHZ_DB_NAME)
-        # 雨花斋正式库信息
-        self.yhz_user = self.get_conf(Config.YHZ_USER, 'R')
-        self.yhz_release = self.get_conf(Config.YHZ_HOST, 'R')
-        self.yhz_db_name = self.get_conf(Config.YHZ_DB_NAME, 'R')
-        # 一生约测试环境物业app
-        self.tysy_pro_host = self.get_conf(Config.YSY_PRO_HOST)
-        # 一生约正式环境物业app
-        self.ysy_pro_user = self.get_conf(Config.YSY_PRO_USER, 'R')
-        self.ysy_pro_release = self.get_conf(Config.YSY_PRO_HOST, 'R')
-        # 小猪测试数据库
-        self.ysyo2o_host = self.get_conf(Config.O2O_HOST)
-        self.tdb_name_o2o = self.get_conf(Config.O2O_DB_NAME)
-        # 小猪正式数据库
-        self.ysy_o2o = self.get_conf(Config.O2O_HOST, 'R')
-        self.db_name_o2o = self.get_conf(Config.O2O_DB_NAME, 'R')
-        # 姐妹邦测试环境
-        self.jmb_test = self.get_conf(Config.JMB_T_HOST)
-        self.jmb_t_user = self.get_conf(Config.JMB_T_USER)
-        # 姐妹邦测试环境DB
-        self.jmb_t_db_host = self.get_conf(Config.JMB_T_DB_HOST)
-        self.jmb_t_db_name = self.get_conf(Config.JMB_T_DB_NAME)
-        self.jmb_t_db_user = self.get_conf(Config.JMB_T_DB_USER)
-        self.jmb_t_db_pwd = self.get_conf(Config.JMB_T_DB_PWD)
-        self.jmb_t_db_port = self.get_conf(Config.JMB_T_DB_PORT)
         # 建能通測試環境
         self.jnt_app_test = self.get_conf(Config.JNT_APP_TEST)
         self.jnt_oa_test = self.get_conf(Config.JNT_OA_TEST)
         # 建能通正式环境
         self.jnt_app_dev = self.get_conf(Config.JNT_APP_DEV, 'R')
         self.and_dev = self.get_conf(Config.AND_DEV, 'R')
+        # 安能达OA数据库
+        self.oa_db_host = self.get_conf(Config.OA_DB_HOST)
+        self.oa_db_port = self.get_conf(Config.OA_DB_PORT)
+        self.oa_db_name = self.get_conf(Config.OA_DB_NAME)
+        self.oa_db_user = self.get_conf(Config.OA_DB_USER)
+        self.oa_db_pwd = self.get_conf(Config.OA_DB_PWD)
 
     def get_conf(self, value, title='T'):
         """

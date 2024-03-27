@@ -412,3 +412,6 @@
 [ERROR 2024-03-19 15:49:22]Response body Does not contain expected_msg, expected_msg is 正确
 [ERROR 2024-03-19 15:49:22]Response body Does not contain expected_msg, expected_msg is 正确
 [ERROR 2024-03-19 16:32:42]Response body Does not contain expected_msg, expected_msg is 下道-平均效率
+[ERROR 2024-03-19 16:48:14]error log：get param fail
+[ERROR 2024-03-19 16:48:34]error log：get param fail
+[ERROR 2024-03-19 20:03:26]Response body Does not contain expected_msg, expected_msg is 自动化添加

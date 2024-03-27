@@ -11,10 +11,12 @@ def init_connect():
 
 
 def pytest_configure(config):
-    # 注册自定义标记 debug
+    # 注册自定义标记
     config.addinivalue_line(
         "markers",
         "debug: 标记测试用例为调试用途，只有在显式请求时才运行这些测试"
+        "andoa: 安能达OA的用例"
+        "selen: selenium_ide调试用例"
     )
 
 

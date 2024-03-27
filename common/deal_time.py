@@ -1,6 +1,6 @@
 # -- coding:utf-8 --
-import time, random, datetime
-
+import time, random
+from datetime import datetime, timedelta
 from common import operate_json
 from common.yaml_util import YamlUtil
 
@@ -28,10 +28,32 @@ class DealTime(object):
         把时间戳写入json文件
         :return:
         '''
+
         self.oper_j.write_json_value(oa_start_stamp=self.get_current_timestamp(), cur_date=self.get_cur_date(),
                                      oa_end_stamp=self.get_current_timestamp() + 3600,
                                      reimburse_Date=self.get_current_timestamp(),
-                                     cur_time_stf=self.get_current_timestamp())
+                                     cur_time_stf=self.get_current_timestamp(),
+                                     cur_date_time=self.get_cur_date_time(),
+                                     cur_date_time_delay_6hours=self.get_cur_date_time_delay_housr())
+
+    def get_cur_date_time(self):
+        # 获取当前时间
+        current_time = datetime.now()
+        # 格式化当前时间为指定格式
+        return current_time.strftime("%Y-%m-%d %H:%M")
+
+    def get_cur_date_time_delay_housr(self, delay_times=6):
+        '''
+        获取当前时间往后推6小时
+        :param delay_hours:
+        :return:
+        '''
+        # 获取当前时间
+        current_time = datetime.now()
+        # 将当前时间往后推6小时
+        current_time_plus_6_hours = current_time + timedelta(hours=delay_times)
+        # 格式化这个时间
+        return current_time_plus_6_hours.strftime("%Y-%m-%d %H:%M")
 
     def get_cur_date(self, *args, **kwargs):
         '''获取当前得日期'''
@@ -132,4 +154,4 @@ class DealTime(object):
 
 if __name__ == '__main__':
     dt = DealTime()
-    print(dt.get_current_timestamp(), dt.get_cur_time_add())
+    dt.write_time_to_json()

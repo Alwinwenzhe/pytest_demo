@@ -1,25 +1,23 @@
-from common import operate_json
-
-oper_j = operate_json.OperateJson()
+import pytest
 
 
-def process_url(url):
-    symbol_data = url.split('j::')
-    data = symbol_data[0]
-
-    for i in range(1, len(symbol_data)):
-        key_value_pairs = symbol_data[i].split('&')
-
-        key = key_value_pairs[0].split('=')[-1]  # 获取标识符后的键名
-        value = oper_j.get_json_value(key)  # 获取对应键的值
-        data += str(value)
-
-        if len(key_value_pairs) > 1:
-            data += '&' + '&'.join(key_value_pairs[1:])  # 保留剩余的参数部分
-
-    return data
+# 定义fixture，每次调用时返回一个新的值
+@pytest.fixture(scope="function")  # scope设置为function表示每个测试方法都会有一个新的fixture实例
+def my_value():
+    value = 0  # 初始值
+    yield value  # 返回当前值给测试方法
+    # 这里可以放置清理逻辑，但在这个例子中我们不需要
 
 
-url = 'https://v1.2.tunnelprj.com/api/app/construction/log/statistics/time/consuming?tunnelId=j::tunnelId&taskId=j::taskId'
-processed_url = process_url(url)
-print(processed_url)
+class TestMyValues:
+
+    def test_increment_value(self, my_value):
+        # 使用fixture提供的初始值
+        assert my_value == 0
+        my_value += 1  # 修改fixture返回的值（但这不会影响下一个测试方法中的fixture值）
+        assert my_value == 1
+
+    def test_another_method_with_value(self, my_value):
+        # 在这个测试方法中，我们又得到了fixture的初始值，因为它是一个新的实例
+        assert my_value == 0
+        # 在这里可以对值进行其他操作

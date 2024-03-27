@@ -17,7 +17,7 @@ class Base(object):
         '''需要初始话driver'''
         self.driver = driver
 
-    def find_element(self, feature,timeout=5, poll=1.0):
+    def find_element(self, feature, timeout=5, poll=1.0):
         # feature = By.XPATH,"//*[@text='显示']"
         """
         自定义一个元素查找方法
@@ -30,7 +30,7 @@ class Base(object):
         wait = WebDriverWait(self.driver, timeout, poll)
         if by == By.XPATH:
             value = self.make_xpath(value)
-        return wait.until(lambda x: x.find_element(by,value))
+        return wait.until(lambda x: x.find_element(by, value))
 
     def find_elements(self, feature):
         wait = WebDriverWait(self.driver, 5, 1)
@@ -49,7 +49,6 @@ class Base(object):
         self.fm = self.find_element(loc)
         self.fm.clear()  # 需要先清空输入框，防止有默认内容
         self.fm.send_keys(text)
-
 
     def make_xpath(self, feature):
         '''
@@ -82,12 +81,12 @@ class Base(object):
                 # 默认用户在元组当中定义的数据都是字符串
                 split_list2 = item.split(',')
                 if len(split_list2) == 2:
-                    res_path += "contains(@%s,'%s') and " % (split_list2[0], split_list2[1])
+                    res_path += "contains(@%s,'%s') oa_and " % (split_list2[0], split_list2[1])
                 elif len(split_list2) == 3:
-                    res_path += "@%s='%s' and " % (split_list2[0], split_list2[1])
+                    res_path += "@%s='%s' oa_and " % (split_list2[0], split_list2[1])
                 else:
                     print("请按规则使用")
-            andIndex = res_path.rfind(" and")
+            andIndex = res_path.rfind(" oa_and")
             res_path = res_path[0:andIndex]
             res_path = start_path + res_path + end_path
         else:
@@ -158,10 +157,10 @@ class Base(object):
 
     # 自定义一个功能，可以实现向上滑屏操作。
     def swipe_up(self):
-        start_x = self.get_device_size()[0] * 1/2
-        start_y = self.get_device_size()[1] * 1/2
-        end_x = self.get_device_size()[0] * 1/2
-        end_y = self.get_device_size()[1] * 1/7
+        start_x = self.get_device_size()[0] * 1 / 2
+        start_y = self.get_device_size()[1] * 1 / 2
+        end_x = self.get_device_size()[0] * 1 / 2
+        end_y = self.get_device_size()[1] * 1 / 7
         self.driver.swipe(start_x, start_y, end_x, end_y, 500)
 
     # 切换到微信
@@ -220,7 +219,7 @@ class Base(object):
         # 拼接手机号
         return "1{}{}{}".format(second, third, suffix)
 
-if __name__ == '__main__':
-    b =Base('driver')
-    ''
 
+if __name__ == '__main__':
+    b = Base('driver')
+    ''

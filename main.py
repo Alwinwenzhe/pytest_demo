@@ -2,5 +2,5 @@ import pytest, os
 
 if __name__ == '__main__':
     pytest.main(
-        ['./test_case/jnt_inter_case/', '-m debug', '--maxfail=10', '--alluredir', './tmp'])
+        ['-m chat', '--alluredir', './tmp'])
     os.system('allure generate ./tmp -o ./report -c')
